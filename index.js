@@ -6,7 +6,7 @@ const cors = require('cors');
 const apiRouter = require('./app/routes/api.routes');
 
 //Variables de Configuracion...
-const port = 8000;
+const port = 3000;
 
 //Instanciando servidor...
 const app = express();
@@ -26,6 +26,6 @@ app.use(cors())
 //Rutas...
 app.use('/api', apiRouter);
 
-app.listen(port || process.env.PORT, ()=>{
+app.listen(port, ()=>{
   console.log(`🚀 Servidor corriendo on port: https:localhost:${port}`);
 });
