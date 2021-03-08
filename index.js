@@ -26,6 +26,6 @@ app.use(cors())
 //Rutas...
 app.use('/api', apiRouter);
 
-app.listen(port, ()=>{
+app.listen(port || process.env.PORT, ()=>{
   console.log(`🚀 Servidor corriendo on port: https:localhost:${port}`);
 });
