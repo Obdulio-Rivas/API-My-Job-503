@@ -23,8 +23,11 @@ app.use(bodyParser.urlencoded({
 app.use(cors())
 
 //Rutas...
+app.use('/', (req, res) =>{
+  res.send('Welcome!');
+});
 app.use('/api', apiRouter);
 
-app.listen(port, ()=>{
+app.listen(process.env.PORT || 5000, ()=>{
   console.log(`🚀 Servidor corriendo on port: https:localhost:${port}`);
 });
