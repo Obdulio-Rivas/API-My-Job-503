@@ -5,11 +5,11 @@ const cors = require('cors');
 //Require personal modules.
 const apiRouter = require('./app/routes/api.routes');
 
-//Variables de Configuracion...
-app.set('port', process.env.PORT || 3000)
-
 //Instanciando servidor...
 const app = express();
+
+//Variables de Configuracion...
+app.set('port', process.env.PORT || 3000)
 
 //Tablas
 require('./app/db/database.db');
