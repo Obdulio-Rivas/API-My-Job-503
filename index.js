@@ -9,8 +9,7 @@ const apiRouter = require('./app/routes/api.routes');
 const app = express();
 
 //Variables de Configuracion...
-app.set('port', process.env.PORT || 3000)
-
+const port = 3000
 //Tablas
 require('./app/db/database.db');
 
@@ -26,6 +25,6 @@ app.use(cors())
 //Rutas...
 app.use('/api', apiRouter);
 
-app.listen(app.get('port'), ()=>{
+app.listen(port, ()=>{
   console.log(`🚀 Servidor corriendo on port: https:localhost:${port}`);
 });
