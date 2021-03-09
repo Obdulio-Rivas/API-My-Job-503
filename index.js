@@ -24,7 +24,7 @@ app.use(cors())
 
 //Rutas...
 app.use('/', (req, res) =>{
-  res.send('Welcome!');
+  res.send('Welcome Api ETPS-3!');
 });
 app.use('/api', apiRouter);
 
