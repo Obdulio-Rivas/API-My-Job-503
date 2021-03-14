@@ -21,7 +21,7 @@ module.exports = (sequelize, type) => {
         complementaryStudies: type.STRING,
         language: type.STRING,
         //Llave foranea.
-        idUsuario: type.INTEGER,
+        idUser: type.INTEGER,
         idReference: type.INTEGER,
         state: type.BOOLEAN
     });
