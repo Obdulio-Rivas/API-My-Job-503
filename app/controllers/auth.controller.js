@@ -31,15 +31,22 @@ async function loginUser(req, res){
                 updatedAt: user.updatedAt,
                 jwt: authJwt.createToken(user),
             }
-            res.json({
+            res.status(200).json({
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: "Login correcto!",
                 userData: userData
             });    
+        }else{
+            res.status(200).json({
+                isSuccessful: false,
+                rowsAfected: 0,
+                msg: "Credenciales incorrectas!",
+                usersData: null
+            });    
         }
     } else {
-        res.json({
+        res.status(200).json({
             isSuccessful: false,
             rowsAfected: 0,
             msg: "Credenciales incorrectas!",
