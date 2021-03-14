@@ -35,7 +35,7 @@ const validateRegisterUser = (req, res, next) => {
         return res.status(402).json({
             isSuccessful: false,
             rowsAfectadas: 0,
-            msg: "Faltan datos para registrar el usuario!",
+            msg: "Error en los datos para registrar el usuario.",
             errors: errors.array()
         });
     }
@@ -58,7 +58,7 @@ const validateLoginUser = (req, res, next) => {
         return res.status(402).json({
             isSuccessful: false,
             rowsAfectadas: 0,
-            msg: "Faltan datos para registrar el usuario!",
+            msg: "Error en el formato de los datos de inicio de sesión.",
             errors: errors.array()
         });
     }
