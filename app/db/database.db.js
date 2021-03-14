@@ -17,20 +17,57 @@ const sequelize = new Sequelize(
 //Abstracto Persona.
 const UserModel = require('../models/user.model');
 const RoleModel = require('../models/role.model');
+const VacantModel = require('../models/vacant.model');
+const BusinessModel = require('../models/business.model');
+const ReferenceModel = require('../models/reference.model');
+const CurriculumModel = require('../models/curriculum.modelo');
 
 //Instancia de las Tablas....
 //Persona.
 const User = UserModel(sequelize, Sequelize);
 const Role = RoleModel(sequelize, Sequelize);
+const Vacant = VacantModel(sequelize, Sequelize);
+const Business = BusinessModel(sequelize, Sequelize);
+const Reference = ReferenceModel(sequelize, Sequelize);
+const Curriculum = CurriculumModel(sequelize, Sequelize);
 
-//Carga de datos tablas catalogo.
+//Carga de datos tablas catalogo y datos de prueba.
 const initData = () => {
     //Tabla de roles.
     for (let i = 0; i < initCatalogData.initRoleData.length; i++) {
         Role.findOrCreate({
             where: {
+                role: initCatalogData.initRoleData[i].role
+            }, default:{
                 role: initCatalogData.initRoleData[i].role,
-                state: initCatalogData.initRoleData[i].state,
+                state: initCatalogData.initRoleData[i].state
+            }
+        });
+    }
+    //Tabla de users.
+    for (let i = 0; i < initCatalogData.initUserData.length; i++) {
+        User.findOrCreate({
+            where: {
+                name: initCatalogData.initUserData[i].name
+            }, 
+            defaults: {
+                name: initCatalogData.initUserData[i].name,
+                lastname: initCatalogData.initUserData[i].lastname,
+                imgURL: initCatalogData.initUserData[i].imgURL,
+                age: initCatalogData.initUserData[i].age,
+                civilStatus: initCatalogData.initUserData[i].civilStatus,
+                numberDUI: initCatalogData.initUserData[i].numberDUI,
+                numberNIT: initCatalogData.initUserData[i].numberNIT,
+                address: initCatalogData.initUserData[i].address,
+                telephoneNumber: initCatalogData.initUserData[i].telephoneNumber,
+                birthDate: initCatalogData.initUserData[i].birthDate,
+                nationality: initCatalogData.initUserData[i].nationality,
+                //Usuario.
+                email: initCatalogData.initUserData[i].email,
+                password: initCatalogData.initUserData[i].password,
+                //Llave foranea.
+                idRole: initCatalogData.initUserData[i].idRole,
+                state: initCatalogData.initUserData[i].state
             }
         });
     }
@@ -45,5 +82,9 @@ sequelize.sync({force: false}).then(()=>{
 
 module.exports = {
     User,
-    Role
+    Role,
+    Vacant,
+    Business,
+    Reference,
+    Curriculum
 }
