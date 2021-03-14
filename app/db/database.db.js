@@ -21,7 +21,7 @@ const VacantModel = require('../models/vacant.model');
 const CompanyModel = require('../models/company.model');
 const ReferenceModel = require('../models/reference.model');
 const CurriculumModel = require('../models/curriculum.modelo');
-const RequirementModel = require('../models/requirements.model');
+const RequirementModel = require('../models/requirement.model');
 
 //Instancia de las Tablas....
 //Persona.

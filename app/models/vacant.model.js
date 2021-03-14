@@ -16,6 +16,6 @@ module.exports = (sequelize, type) => {
         state: type.BOOLEAN,
         //llave forarea.
         idCompany: type.INTEGER,
-        idRequirements: type.INTEGER
+        idRequirement: type.INTEGER
     });
 }

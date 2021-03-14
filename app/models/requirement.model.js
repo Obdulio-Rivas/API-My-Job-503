@@ -1,7 +1,7 @@
 module.exports = (sequelize, type) => {
-    return sequelize.define('requirements', {
+    return sequelize.define('requirement', {
         //Llave Primaria.
-        idRequirements: {
+        idRequirement: {
             type: type.INTEGER,
             primaryKey: true,
             autoIncrement: true
