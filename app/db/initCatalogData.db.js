@@ -30,7 +30,7 @@ const initUserData = [
         nationality: 'Salvadoreña',
         //Usuario.
         email: '2552772016@mail.utec.edu.sv',
-        password: bcryptJS.hashSync('password123', 10),
+        password: bcryptJS.hashSync('Password123.', 10),
         //Llave foranea.
         idRole: 1,
         state: true
@@ -49,7 +49,7 @@ const initUserData = [
         nationality: 'Guatemalteca',
         //Usuario.
         email: '2507752016@mail.utec.edu.sv',
-        password: bcryptJS.hashSync('password123', 10),
+        password: bcryptJS.hashSync('Password123.', 10),
         //Llave foranea.
         idRole: 1,
         state: true
@@ -68,7 +68,7 @@ const initUserData = [
         nationality: 'Salvadoreña',
         //Usuario.
         email: '2511012016@mail.utec.edu.sv',
-        password: bcryptJS.hashSync('password123', 10),
+        password: bcryptJS.hashSync('Password123.', 10),
         //Llave foranea.
         idRole: 1,
         state: true
@@ -87,7 +87,7 @@ const initUserData = [
         nationality: 'Salvadoreña',
         //Usuario.
         email: '2556392016@mail.utec.edu.sv',
-        password: bcryptJS.hashSync('password123', 10),
+        password: bcryptJS.hashSync('Password123.', 10),
         //Llave foranea.
         idRole: 1,
         state: true
@@ -106,7 +106,7 @@ const initUserData = [
         nationality: 'Salvadoreña',
         //Usuario.
         email: '2511802016@mail.utec.edu.sv',
-        password: bcryptJS.hashSync('password123', 10),
+        password: bcryptJS.hashSync('Password123.', 10),
         //Llave foranea.
         idRole: 1,
         state: true    
