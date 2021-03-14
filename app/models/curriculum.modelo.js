@@ -22,6 +22,7 @@ module.exports = (sequelize, type) => {
         language: type.STRING,
         //Llave foranea.
         idUsuario: type.INTEGER,
+        idReference: type.INTEGER,
         state: type.BOOLEAN
     });
 }

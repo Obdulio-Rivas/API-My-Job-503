@@ -11,8 +11,6 @@ module.exports = (sequelize, type) => {
         lastname: type.STRING,
         telephoneNumber: type.STRING,
         email: type.STRING,
-        //Llave forarea.
-        idCurriculum: type.INTEGER,
         state: type.BOOLEAN
     });
 }
