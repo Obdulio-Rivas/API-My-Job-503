@@ -18,18 +18,20 @@ const sequelize = new Sequelize(
 const UserModel = require('../models/user.model');
 const RoleModel = require('../models/role.model');
 const VacantModel = require('../models/vacant.model');
-const BusinessModel = require('../models/business.model');
+const CompanyModel = require('../models/company.model');
 const ReferenceModel = require('../models/reference.model');
 const CurriculumModel = require('../models/curriculum.modelo');
+const RequirementModel = require('../models/requirements.model');
 
 //Instancia de las Tablas....
 //Persona.
 const User = UserModel(sequelize, Sequelize);
 const Role = RoleModel(sequelize, Sequelize);
 const Vacant = VacantModel(sequelize, Sequelize);
-const Business = BusinessModel(sequelize, Sequelize);
+const Company = CompanyModel(sequelize, Sequelize);
 const Reference = ReferenceModel(sequelize, Sequelize);
 const Curriculum = CurriculumModel(sequelize, Sequelize);
+const Requirement = RequirementModel(sequelize, Sequelize);
 
 //Carga de datos tablas catalogo y datos de prueba.
 const initData = () => {
@@ -84,7 +86,8 @@ module.exports = {
     User,
     Role,
     Vacant,
-    Business,
+    Company,
     Reference,
-    Curriculum
+    Curriculum,
+    Requirement
 }
