@@ -1,4 +1,5 @@
 const bcryptJS = require('bcryptjs');
+const moment = require('moment')
 //Instancia del Model Usuario para la BD.
 const { User } = require('../db/database.db');
 
@@ -57,6 +58,8 @@ async function createUser(req, res) {
     if(!user){
         //Encriptamos la contraseña...
         req.body.password = bcryptJS.hashSync(req.body.password, 10);
+        //Validamos y formateamos la fecha de nacimiento.
+        req.body.birthDate = moment(req.body.birthDate, 'YYYY/MM/DD');
         //Creamos el usuario.
         const newUser = await User.create(req.body);
         //Validamos si se creo.
@@ -66,14 +69,16 @@ async function createUser(req, res) {
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: "Usuario registrado con exito!",
-                userData: newUser
+                userData: newUser,
+                jwt: req.jwt
             });
         }else{
             res.status(402).json({
                 isSuccessful: false,
                 rowsAfectadas: 0,
                 msg: "No se pudo registrar el usuario!",
-                userData: newUser
+                userData: newUser,
+                jwt: req.jwt
             });
         }
     }else{
@@ -81,7 +86,8 @@ async function createUser(req, res) {
             isSuccessful: false,
             rowsAfectadas: 0,
             msg: `Error ya existe un usuario, registrado con el email ${email}`,
-            userData: null
+            userData: null,
+            jwt: req.jwt
         });
     }
 }

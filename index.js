@@ -29,6 +29,6 @@ app.use('/', (req, res) =>{
   res.send('Welcome Api ETPS-3!');
 });
 
-app.listen(process.env.PORT || 5000, ()=>{
+app.listen(process.env.PORT || port, ()=>{
   console.log(`🚀 Servidor corriendo on port: https:localhost:${port}`);
 });
