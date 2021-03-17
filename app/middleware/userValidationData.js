@@ -55,8 +55,8 @@ const validateLoginUser = (req, res, next) => {
     if(!errors.isEmpty()){
         return res.status(402).json({
             isSuccessful: false,
-            rowsAfectadas: 0,
-            msg: "Error en el formato de los datos de inicio de sesión.",
+            rowsAfected: 0,
+            msg: "Credenciales incorrectas.",
             errors: errors.array()
         });
     }
