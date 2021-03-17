@@ -5,7 +5,7 @@ const config = require("../config/auth.config.js");
 //Options
 const expiredTime = 10
 
-
+//Crear token.
 createToken = (user) => {
   const userData = user;
   const payload = {
@@ -17,12 +17,9 @@ createToken = (user) => {
   return jwtSimple.encode(payload, config.secret);
 }
 
+//Actualizar token.
 updateToken = (idUser) => {
-  
-  const userData = {
-    idUser: idUser
-  }
-
+  const userData = {idUser: idUser}
   const payload = {
     idUser: userData.idUser,
     createAt: moment().unix(),
@@ -32,6 +29,7 @@ updateToken = (idUser) => {
   return jwtSimple.encode(payload, config.secret);
 }
 
+//Validar token en paso.
 verifyToken = (req, res, next) => {
   //Obtenemos el token.
   let token = req.headers["user-access-token"];

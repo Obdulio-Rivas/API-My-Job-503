@@ -1,4 +1,5 @@
 const bcryptJS = require('bcryptjs');
+const moment = require('moment');
 const authJwt = require('../middleware/authJwt');
 //Instancia del Model Usuario para la BD.
 const { User } = require('../db/database.db');
@@ -55,11 +56,48 @@ async function loginUser(req, res){
     }
 }
 
-async function logoutUser(req, res){
-
+//Registro de usuario
+async function registerUser(req, res){
+    //Buscamos si existe algun usuario con ese correo ya registrado.
+    const email = req.body.email;
+    const user = await User.findOne({ where: { email: email } });
+    //Validamos si se encontraron coincidencias.
+    if(!user){
+        //Encriptamos la contraseña...
+        req.body.password = bcryptJS.hashSync(req.body.password, 10);
+        //Validamos y formateamos la fecha de nacimiento.
+        req.body.birthDate = moment('1981/06/12', 'YYYY/MM/DD');
+        //Creamos el usuario.
+        const newUser = await User.create(req.body);
+        //Validamos si se creo.
+        if(newUser){
+            console.log(newUser)
+            let rowsAfected = Object.keys(newUser).length;
+            res.status(200).json({
+                isSuccessful: true,
+                rowsAfected: rowsAfected,
+                msg: "Te has registrado con exito!",
+                userData: newUser
+            });
+        }else{
+            res.status(200).json({
+                isSuccessful: false,
+                rowsAfectadas: 0,
+                msg: "No se pudo registrar el usuario!",
+                userData: newUser
+            });
+        }
+    }else{
+        res.status(200).json({
+            isSuccessful: false,
+            rowsAfectadas: 0,
+            msg: `Error ya existe un usuario, registrado con el email ${email}`,
+            userData: null
+        });
+    }
 }
 
 module. exports = {
     loginUser,
-    logoutUser
+    registerUser
 }

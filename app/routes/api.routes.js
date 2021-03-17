@@ -13,6 +13,8 @@ router.get('/', (req, res) =>{
 
 //Rutas de Login, Logout.
 router.use('/auth', apiAuthRouter);
+//Rutas de regitro.
+router.use('/register', apiAuthRouter);
 //Rutas de CRUD de Usuarios.
 router.use('/users', authJwt.verifyToken, apiUserRouter);
 

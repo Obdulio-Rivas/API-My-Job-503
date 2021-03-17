@@ -7,8 +7,8 @@ const passwordRules = {
 }
 
 //Configuraciones y validaciones.
-/*Validaciones de la informacion que se envia para el registro o creacion de un usuario nuevo.*/
-const userValidationRulesRegister = () => {
+/*Validaciones de la informacion que se envia para la creacion y actualizacion de un usuario nuevo.*/
+const userValidationRulesDataUser = () => {
     return [
         check('name', 'El campo nombre es requerido!').trim().not().isEmpty(),
         check('lastname', 'El campo apellido es requerido!').trim().not().isEmpty(),
@@ -28,14 +28,53 @@ const userValidationRulesRegister = () => {
         check('password', 'Por favor ingrese una contraseña de al menos 8 caracteres y contenga al menos una mayúscula, al menos una minúscula, al menos un carácter especial.').isLength({ min: passwordRules.min }).matches(passwordRules.regExpChain,)
     ]
 }
-  
+
+/*Validaciones de la informacion que se envia para la creacion de un usuario nuevo.*/
+const userValidationRulesRegisterUser = () => {
+    return [
+        check('name', 'El campo nombre es requerido!').trim().not().isEmpty(),
+        check('lastname', 'El campo apellido es requerido!').trim().not().isEmpty(),
+        check('email', 'El campo correo es requerido!').trim().isEmail(),
+        check('password', 'El campo contraseña es requerido!').trim().not().isEmpty(),
+        check('idRole', 'El campo tipo es requerido!').trim().not().isEmpty(),
+        check('state', 'El estado es requerido!').trim().not().isEmpty(),
+        check('password', 'Por favor ingrese una contraseña de al menos 8 caracteres y contenga al menos una mayúscula, al menos una minúscula, al menos un carácter especial.').isLength({ min: passwordRules.min }).matches(passwordRules.regExpChain,)
+    ]
+}
+
 const validateRegisterUser = (req, res, next) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
-        return res.status(402).json({
+        return res.status(200).json({
             isSuccessful: false,
             rowsAfectadas: 0,
             msg: "Error en los datos para registrar el usuario.",
+            errors: errors.array()
+        });
+    }
+    return next();
+}
+
+const validateCreateUser = (req, res, next) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(200).json({
+            isSuccessful: false,
+            rowsAfectadas: 0,
+            msg: "Error en los datos para crear el usuario.",
+            errors: errors.array()
+        });
+    }
+    return next();
+}
+
+const validateUpdateUser = (req, res, next) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(200).json({
+            isSuccessful: false,
+            rowsAfectadas: 0,
+            msg: "Error en los datos para crear el usuario.",
             errors: errors.array()
         });
     }
@@ -64,8 +103,11 @@ const validateLoginUser = (req, res, next) => {
 }
   
 module.exports = {
-    userValidationRulesRegister,
+    validateLoginUser,
+    validateCreateUser,
+    validateUpdateUser,
     validateRegisterUser,
     userValidationRulesLogin,
-    validateLoginUser
+    userValidationRulesDataUser,
+    userValidationRulesRegisterUser
 }
