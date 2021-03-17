@@ -42,7 +42,7 @@ async function loginUser(req, res){
                 isSuccessful: false,
                 rowsAfected: 0,
                 msg: "Credenciales incorrectas!",
-                usersData: null
+                userData: null
             });    
         }
     } else {
@@ -50,7 +50,7 @@ async function loginUser(req, res){
             isSuccessful: false,
             rowsAfected: 0,
             msg: "Credenciales incorrectas!",
-            usersData: null
+            userData: null
         });
     }
 }

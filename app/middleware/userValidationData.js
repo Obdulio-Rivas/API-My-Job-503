@@ -53,7 +53,7 @@ const userValidationRulesLogin = () => {
 const validateLoginUser = (req, res, next) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
-        return res.status(402).json({
+        return res.status(200).json({
             isSuccessful: false,
             rowsAfected: 0,
             msg: "Credenciales incorrectas.",
