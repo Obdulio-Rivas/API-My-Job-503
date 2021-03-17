@@ -45,10 +45,8 @@ const validateRegisterUser = (req, res, next) => {
 /*Validaciones de la informacion que se envia para el inicio de sesion.*/
 const userValidationRulesLogin = () => {
     return [
-        check('email', 'El campo correo es requerido!').not().isEmpty(),
-        check('password', 'El campo contraseña es requerido!').not().isEmpty(),
         check('email', 'El campo correo es requerido!').trim().isEmail(),
-        check('password', 'Por favor ingrese una contraseña de al menos 8 caracteres y contenga al menos una mayúscula, al menos una minúscula, al menos un carácter especial.').isLength({ min: passwordRules.min }).matches(passwordRules.regExpChain,)
+        check('password', 'El campo contraseña es requerido!').not().isEmpty(),
     ]
 }
   
