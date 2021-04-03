@@ -9,9 +9,11 @@
     404 page
 =======================*/
 
-.page_404{ 
-    padding: 0em; 
+.page_404{
     background:#fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
  .box_img_404 img{
@@ -46,4 +48,92 @@
 
 .contant_box_404 p{
     font-size: 1.2em;
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 768px) {
+    
+    .page_404{
+        height: 70vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box_img_404 img{
+        height: 600px;
+        width: 825px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .contant_box_404{ 
+        text-align: center;
+        margin-top: -7.5em;
+    }
+    
+    .contant_box_404 h1{
+        font-size: 3em;
+    }
+    
+    .contant_box_404 h2{
+        font-size: 2.05em;
+    }
+    
+    .contant_box_404 p{
+        font-size: 1.5em;
+    }
+
+    .btn{
+        font-size: 1.5em;
+        padding: 5px 15px;
+    }
+}
+  
+  /* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+  
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .page_404{
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box_img_404 img{
+        height: 250px;
+        width: 325px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .contant_box_404{ 
+        text-align: center;
+        margin-top: -2.5em;
+    }
+    
+    .contant_box_404 h1{
+        font-size: 1.5em;
+    }
+    
+    .contant_box_404 h2{
+        font-size: 1em;
+    }
+    
+    .contant_box_404 p{
+        font-size: 0.8em;
+    }
+
+    .btn{
+        font-size: 0.8em;
+        padding: 5px 15px;
+    }
 }
