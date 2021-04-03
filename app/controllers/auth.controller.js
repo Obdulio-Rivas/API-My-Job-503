@@ -237,14 +237,14 @@ async function confirmEmailUser(req, res){
             user.state = 2;
             await user.save();
             //Respondemos con una vista.
-            res.sendFile(__dirname + '/public/pageConfirmation.html');
+            res.sendFile('/public/pageConfirmation.html');
         }else{
             //Respondemos con una vista.
-            res.sendFile(__dirname + '/public/pageConfirmation.html');
+            res.sendFile('/public/pageConfirmation.html');
         }
     } catch (error) {        
         //Respondemos con una vista.
-        res.sendFile(__dirname + '/public/pageConfirmation.html');
+        res.sendFile('/public/pageConfirmation.html');
     }
 }
 
