@@ -21,8 +21,10 @@ module.exports = (sequelize, type) => {
         //Usuario.
         email: type.STRING,
         password: type.STRING(150),
+        codeConfirmation: type.STRING(200),
+        socialSingIn: type.BOOLEAN,
         //Llave foranea.
         idRole: type.INTEGER,
-        state: type.BOOLEAN
+        state: type.ENUM('Pending', 'Active', 'Inactive', 'Block')
     });
 }

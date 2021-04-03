@@ -1,5 +1,5 @@
-const moment = require('moment')
-const bcryptJS= require('bcryptjs')
+const moment = require('moment');
+const bcryptJS= require('bcryptjs');
 
 //Data
 const initRoleData = [
@@ -31,9 +31,11 @@ const initUserData = [
         //Usuario.
         email: '2552772016@mail.utec.edu.sv',
         password: bcryptJS.hashSync('Password123.', 10),
+        codeConfirmation: bcryptJS.hashSync('2552772016@mail.utec.edu.sv', 10),
+        socialSingIn: false,
         //Llave foranea.
         idRole: 1,
-        state: true
+        state: 2
     },
     {
         name: 'Anyi Alejandra',
@@ -50,9 +52,11 @@ const initUserData = [
         //Usuario.
         email: '2507752016@mail.utec.edu.sv',
         password: bcryptJS.hashSync('Password123.', 10),
+        codeConfirmation: bcryptJS.hashSync('2507752016@mail.utec.edu.sv', 10),
+        socialSingIn: false,
         //Llave foranea.
         idRole: 1,
-        state: true
+        state: 2
     },
     {
         name: 'Francisco Alexander',
@@ -69,9 +73,11 @@ const initUserData = [
         //Usuario.
         email: '2511012016@mail.utec.edu.sv',
         password: bcryptJS.hashSync('Password123.', 10),
+        codeConfirmation: bcryptJS.hashSync('2511012016@mail.utec.edu.sv', 10),
+        socialSingIn: false,
         //Llave foranea.
         idRole: 1,
-        state: true
+        state: 2
     },
     {
         name: 'Yohalmo Ernesto',
@@ -88,9 +94,11 @@ const initUserData = [
         //Usuario.
         email: '2556392016@mail.utec.edu.sv',
         password: bcryptJS.hashSync('Password123.', 10),
+        codeConfirmation: bcryptJS.hashSync('2556392016@mail.utec.edu.sv', 10),
+        socialSingIn: false,
         //Llave foranea.
         idRole: 1,
-        state: true
+        state: 2
     },
     {
         name: 'Diana Rebeca',
@@ -107,9 +115,11 @@ const initUserData = [
         //Usuario.
         email: '2511802016@mail.utec.edu.sv',
         password: bcryptJS.hashSync('Password123.', 10),
+        codeConfirmation: bcryptJS.hashSync('2511802016@mail.utec.edu.sv', 10),
+        socialSingIn: false,
         //Llave foranea.
         idRole: 1,
-        state: true    
+        state: 2
     }
 ]
 

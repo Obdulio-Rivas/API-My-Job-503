@@ -101,13 +101,35 @@ const validateLoginUser = (req, res, next) => {
     }
     return next();
 }
+
+/*Validaciones de la informacion que se envia para el inicio de sesion.*/
+const userValidationRulesLoginGoogle = () => {
+    return [
+        check('id_token', 'El id_token es necesario!').not().isEmpty()
+    ]
+}
+  
+const validateLoginGoogleUser = (req, res, next) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(200).json({
+            isSuccessful: false,
+            rowsAfected: 0,
+            msg: "Imposible ingresar con Google.",
+            errors: errors.array()
+        });
+    }
+    return next();
+}
   
 module.exports = {
     validateLoginUser,
     validateCreateUser,
     validateUpdateUser,
     validateRegisterUser,
+    validateLoginGoogleUser,
     userValidationRulesLogin,
     userValidationRulesDataUser,
+    userValidationRulesLoginGoogle,
     userValidationRulesRegisterUser
 }

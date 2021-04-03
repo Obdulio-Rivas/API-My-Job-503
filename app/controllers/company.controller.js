@@ -1,83 +1,82 @@
 const bcryptJS = require('bcryptjs');
 const moment = require('moment')
-//Instancia del Model User para la BD.
-const { User } = require('../db/database.db');
+//Instancia del Model Company para la BD.
+const { Company } = require('../db/database.db');
 
-//User controller.
-//Obtener todos los usuarios.
-async function getAllUsers(req, res) {
-    const users = await User.findAll();
-    let rowsAfected = Object.keys(users).length;
+//Company controller.
+//Obtener todos las compañias.
+async function getAllCompanies(req, res) {
+    const companies = await Company.findAll();
+    let rowsAfected = Object.keys(companies).length;
     res.json({
         isSuccessful: true,
         rowsAfected: rowsAfected,
-        msg: "Usuarios Actuales en la Base de Datos!",
-        data: users
+        msg: "Compañias Actuales en la Base de Datos!",
+        data: companies
     });
 }
 
-//Obtener un usuario por id.
-async function getUser(req, res) {
+//Obtener un compañia por id.
+async function getCompany(req, res) {
     let rowsAfected = 0;
-    var user = null;
-    const idUser = req.params.idUser;
-    if(idUser){
-        user = await User.findOne({ where: { idUser: idUser } });
-        if(user){
+    var company = null;
+    const idCompany = req.params.idCompany;
+    if(idCompany){
+        company = await Company.findOne({ where: { idCompany: idCompany } });
+        if(company){
             rowsAfected = 1;
             res.json({
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
-                msg: `Usuario con id ${idUser} encontrado con exito!`,
-                data: user
+                msg: `Compañia con id ${idCompany} encontrado con exito!`,
+                data: company
             });
         }else{
             res.json({
                 isSuccessful: false,
                 rowsAfected: rowsAfected,
-                msg: `No se ha encontrado un usuario con id ${idUser}`,
-                data: user
+                msg: `No se ha encontrado una compañia con id ${idCompany}`,
+                data: company
             });
         }
     }else{
         res.json({
             isSuccessful: false,
             rowsAfected: rowsAfected,
-            msg: `No se a recibido el parametro idUsuario!`,
-            data: user
+            msg: `No se ha recibido el parametro idCompany!`,
+            data: company
         });
     }
 }
 
-//Crear usuario.
-async function createUser(req, res) {
+//Crear compañia.
+async function createCompany(req, res) {
     //Buscamos si existe algun usuario con ese correo ya registrado.
-    const email = req.body.email;
-    const user = await User.findOne({ where: { email: email } });
+    const nameCompany = req.body.nameCompany;
+    const company = await Company.findOne({ where: { nameCompany: nameCompany } });
     //Validamos si se encontraron coincidencias.
-    if(!user){
-        //Encriptamos la contraseña...
-        req.body.password = bcryptJS.hashSync(req.body.password, 10);
-        //Validamos y formateamos la fecha de nacimiento.
-        req.body.birthDate = moment(req.body.birthDate, 'YYYY/MM/DD');
-        //Creamos el usuario.
-        const newUser = await User.create(req.body);
+    if(!company){
+        //Obtenemos el id del usuario gestor de la compañia.
+        // Sacarlo del jwt
+        const idUser = req.body.idUser;
+        //Creamos la compañia.
+        const newCompany = await Company.create(req.body);
         //Validamos si se creo.
-        if(newUser){
+        if(newCompany){
             let rowsAfected = Object.keys(newUser).length;
             res.status(200).json({
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
-                msg: "Usuario registrado con exito!",
-                data: newUser,
+                msg: "Compañia registrada con exito!",
+                data: newCompany,
                 jwt: req.jwt
             });
         }else{
             res.status(200).json({
                 isSuccessful: false,
                 rowsAfectadas: 0,
-                msg: "No se pudo registrar el usuario!",
-                data: newUser,
+                msg: "No se pudo registrar la compañia!",
+                data: null,
                 jwt: req.jwt
             });
         }
@@ -86,7 +85,7 @@ async function createUser(req, res) {
             isSuccessful: false,
             rowsAfectadas: 0,
             msg: `Error ya existe un usuario, registrado con el email ${email}`,
-            data: user,
+            data: null,
             jwt: req.jwt
         });
     }

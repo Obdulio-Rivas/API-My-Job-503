@@ -11,12 +11,18 @@ router.get('/', (req, res) =>{
     res.send('Api ETPS-3');
 });
 
-//Rutas de Login, Logout.
+//Rutas de Login, Logout de Usuarios.
 router.use('/auth', apiAuthRouter);
-//Rutas de regitro.
-router.use('/register', apiAuthRouter);
+//Rutas de Sign In de Usuarios.
+router.use('/signIn', apiAuthRouter);
+//Rutas de Sign In de Usuarios.
+router.use('/confirm', apiAuthRouter);
 //Rutas de CRUD de Usuarios.
 router.use('/users', authJwt.verifyToken, apiUserRouter);
+//Rutas de CRUD de Empresas.
+router.use('/company', authJwt.verifyToken, apiUserRouter);
+//Rutas de CRUD de Curriculum.
+router.use('/curriculum', authJwt.verifyToken, apiUserRouter);
 
 
 module.exports = router;

@@ -6,8 +6,8 @@ module.exports = (sequelize, type) => {
             primaryKey: true,
             autoIncrement: true
         },
-        nameCategory: type.STRING,
-        CategoryCompany: type.STRING,
+        nameCompany: type.STRING,
+        categoryCompany: type.INTEGER,
         address: type.STRING,
         telephoneNumber:  type.STRING,
         email:  type.STRING,
