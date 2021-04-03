@@ -229,33 +229,22 @@ async function signInGoogleUser(req, res){
 async function confirmEmailUser(req, res){
     //Obtenemos el codigo de confirmación.
     const { codeConfirmation } = req.params;
-    //Buscamos si existe un usuario con ese codigo de confirmación.
     try {
+        //Buscamos si existe un usuario con ese codigo de confirmación.
         var user = await User.findOne({ where: { codeConfirmation: codeConfirmation } });
         if (user !== null) {
+            //Actualizamos el estado del usuario
             user.state = 2;
             await user.save();
-            res.status(200).json({
-                isSuccessful: false,
-                rowsAfected: 0,
-                msg: "Actualizado",
-                userData: null
-            });
+            //Respondemos con una vista.
+            res.sendFile(__dirname + '/public/pageConfirmation.html');
         }else{
-            res.status(200).json({
-                isSuccessful: false,
-                rowsAfected: 0,
-                msg: "No se pudo actualizar",
-                userData: null
-            });
+            //Respondemos con una vista.
+            res.sendFile(__dirname + '/public/pageConfirmation.html');
         }
-    } catch (error) {
-        res.status(200).json({
-            isSuccessful: false,
-            rowsAfected: 0,
-            msg: "Token de Google no es valido!",
-            userData: null
-        });
+    } catch (error) {        
+        //Respondemos con una vista.
+        res.sendFile(__dirname + '/public/pageConfirmation.html');
     }
 }
 

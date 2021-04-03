@@ -30,5 +30,5 @@ app.use('*', (req, res) =>{
 });
 
 app.listen(process.env.PORT || port, ()=>{
-  console.log(`🚀 Servidor corriendo on port: https:localhost:${process.env.PORT}`);
+  console.log(`🚀 Servidor corriendo on port: ${process.env.PORT}`);
 });

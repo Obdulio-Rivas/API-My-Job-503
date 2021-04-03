@@ -21,7 +21,7 @@ const sendConfirmationEmail = (name, email, confirmationCode) => {
                 <table style="max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;">
                     <tr>
                         <td style="background-color: #ecf0f1; text-align: left; padding: 0">
-                            <img width="20%" style="display:block; margin: 1.5% 3%" src="${imgLogo}" alt="Logo My Job 503">
+                            <img width="20%;" style="display:block; margin: 1.5% 3%;" src="${imgLogo}" alt="Logo My Job 503">
                         </td>
                     </tr>    
                     <tr>

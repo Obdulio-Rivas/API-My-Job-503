@@ -1,0 +1,49 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+/*======================
+    404 page
+=======================*/
+
+.page_404{ 
+    padding: 0em; 
+    background:#fff;
+}
+
+ .box_img_404 img{
+     height: 75vh;
+     display: block;
+     margin: 0 auto;
+ }
+			 
+.btn{
+    color: #fff!important;
+    padding: 10px 20px;
+    background: #39ac31;
+    margin: 20px 0 0 0;
+    display: inline-block;
+    border-radius: 5px;
+    text-decoration: none;
+    border-bottom: 4px solid #2d8627;
+}
+
+.contant_box_404{ 
+    text-align: center;
+    margin-top: -6em;
+}
+
+.contant_box_404 h1{
+    font-size: 2.5em;
+}
+
+.contant_box_404 h2{
+    font-size: 1.5em;
+}
+
+.contant_box_404 p{
+    font-size: 1.2em;
+}
