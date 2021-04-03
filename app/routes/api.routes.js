@@ -8,7 +8,7 @@ const authJwt = require('../middleware/authJwt')
 
 //Ruta Inicial.
 router.get('/', (req, res) =>{
-    res.send('Api ETPS-3');
+    res.sendFile(__dirname + '/public/pageApiWiki.html');
 });
 
 //Rutas de Login, Logout de Usuarios.
