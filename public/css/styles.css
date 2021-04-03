@@ -26,7 +26,8 @@
     color: #fff!important;
     padding: 10px 20px;
     background: #39ac31;
-    margin: 20px 0 0 0;
+    margin: auto;
+    margin-top: 20px;
     display: inline-block;
     border-radius: 5px;
     text-decoration: none;
@@ -136,4 +137,98 @@
         font-size: 0.8em;
         padding: 5px 15px;
     }
+}
+
+/*======================
+    page confirmation
+=======================*/
+
+.page_confirmation .container{
+    background:#fff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+.container > h1 {
+    padding-top: 0.3em;
+    font-size: 3em;
+}
+
+ .box_img_confirmation img{
+     height: 70vh;
+     display: block;
+     margin: 0 auto;
+ }
+
+ .contant_box_confirmation{
+     display: flex;
+     max-width: 550px;
+     color: rgb(41, 41, 41);
+     flex-direction: column;
+     justify-items: center;
+     align-items: center;
+    text-align: center;
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 768px) {
+    
+    .page_confirmation .container{
+        background:#fff;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .container > h1 {
+        padding-top: 1.5em;
+        font-size: 3em;
+        text-align: center;
+        line-height: 1;
+    }
+    
+     .box_img_confirmation img{
+         height: 40vh;
+         display: block;
+         margin: 0 auto;
+     }
+
+}
+  
+  /* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+  
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .page_confirmation .container{
+        background:#fff;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .container > h1 {
+        padding-top: 0.3em;
+        font-size: 3em;
+        text-align: center;
+        line-height: 1;
+    }
+    
+     .box_img_confirmation img{
+         height: 40vh;
+         display: block;
+         margin: 0 auto;
+     }
 }
