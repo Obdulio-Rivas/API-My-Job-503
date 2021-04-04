@@ -26,7 +26,7 @@ app.use('/api', apiRouter);
 
 //Ruta 404.
 app.use('*', (req, res) =>{
-  res.sendFile(__dirname + '/public/pageConfirmation.html');
+  res.sendFile(__dirname + '/public/page404.html');
 });
 
 app.listen(process.env.PORT || port, ()=>{
