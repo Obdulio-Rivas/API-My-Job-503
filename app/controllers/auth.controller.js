@@ -237,7 +237,7 @@ async function confirmEmailUser(req, res){
             //Actualizamos el estado del usuario
             //user.state = 2;
             //await user.save();
-            const ruta = __dirname.split('/', 1);
+            const ruta = __dirname.split('/', 2);
             //Respondemos con una vista.
             res.status(200).json({
                 isSuccessful: true,
