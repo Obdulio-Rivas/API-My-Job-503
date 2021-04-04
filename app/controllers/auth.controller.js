@@ -239,14 +239,14 @@ async function confirmEmailUser(req, res){
             //await user.save();
             const ruta = __dirname.substring(0);
             //Respondemos con una vista.
-            res.status(200).json({
+            /*res.status(200).json({
                 isSuccessful: true,
                 rowsAfectadas: 1,
                 msg: "Actualizado!",
                 userData: ruta
-            });
+            });*/
             //De manera local se usa __dir_name antes de la ruta
-            //res.sendFile(__dirname + 'public/pageConfirmation.html');
+            res.sendFile('/app/public/pageConfirmation.html');
         }else{
             //Respondemos con una vista.
             //res.sendFile(__dirname + 'public/pageConfirmation.html');
