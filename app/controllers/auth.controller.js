@@ -238,20 +238,32 @@ async function confirmEmailUser(req, res){
             await user.save();
             //Respondemos con una vista.
             res.status(200).json({
-                isSuccessful: false,
+                isSuccessful: true,
                 rowsAfectadas: 0,
-                msg: "No se pudo registrar el usuario!",
+                msg: "Actualizado!",
                 userData: __dirname + 'public/pageConfirmation.html'
             });
             //De manera local se usa __dir_name antes de la ruta
-            res.sendFile(__dirname + 'public/pageConfirmation.html');
+            //res.sendFile(__dirname + 'public/pageConfirmation.html');
         }else{
             //Respondemos con una vista.
-            res.sendFile(__dirname + 'public/pageConfirmation.html');
+            //res.sendFile(__dirname + 'public/pageConfirmation.html');
+            res.status(200).json({
+                isSuccessful: true,
+                rowsAfectadas: 0,
+                msg: "Actualizado!",
+                userData: __dirname + 'public/pageConfirmation.html'
+            });
         }
     } catch (error) {        
         //Respondemos con una vista.
-        res.sendFile(__dirname + 'public/pageConfirmation.html');
+        //res.sendFile(__dirname + 'public/pageConfirmation.html');
+        res.status(200).json({
+            isSuccessful: true,
+            rowsAfectadas: 0,
+            msg: "Actualizado!",
+            userData: __dirname + 'public/pageConfirmation.html'
+        });
     }
 }
 
