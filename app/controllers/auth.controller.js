@@ -239,7 +239,7 @@ async function confirmEmailUser(req, res){
             //Respondemos con una vista.
             res.status(200).json({
                 isSuccessful: true,
-                rowsAfectadas: 0,
+                rowsAfectadas: 1,
                 msg: "Actualizado!",
                 userData: path.join(__dirname, '../public', 'index1.html')
             });
@@ -250,7 +250,7 @@ async function confirmEmailUser(req, res){
             //res.sendFile(__dirname + 'public/pageConfirmation.html');
             res.status(200).json({
                 isSuccessful: true,
-                rowsAfectadas: 0,
+                rowsAfectadas: 2,
                 msg: "Actualizado!",
                 userData: path.join(__dirname, '../public', 'index1.html')
             });
@@ -260,9 +260,9 @@ async function confirmEmailUser(req, res){
         //res.sendFile(__dirname + 'public/pageConfirmation.html');
         res.status(200).json({
             isSuccessful: true,
-            rowsAfectadas: 0,
+            rowsAfectadas: 3,
             msg: "Actualizado!",
-            userData: __dirname + 'public/pageConfirmation.html'
+            userData: path.join(__dirname, '../public', 'index1.html')
         });
     }
 }
