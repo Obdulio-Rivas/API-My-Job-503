@@ -67,7 +67,7 @@ const initData = () => {
                 //Usuario.
                 email: initCatalogData.initUserData[i].email,
                 password: initCatalogData.initUserData[i].password,
-                codeConfirmation: initCatalogData.initUserData[i].codeConfirmation,
+                codeConfirmation: initCatalogData.initUserData[i].codeConfirmation.replace('///i', ''),
                 socialSingIn: initCatalogData.initUserData[i].socialSingIn,
                 //Llave foranea.
                 idRole: initCatalogData.initUserData[i].idRole,

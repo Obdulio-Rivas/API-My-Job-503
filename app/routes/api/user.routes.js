@@ -2,7 +2,7 @@ const {Router} = require('express');
 //Controller's
 const userController = require('../../controllers/user.controller');
 //Middleware's...
-const { userValidationRulesDataUser, validateCreateUser, validateUpdateUser} = require('../../middleware/userValidationData');
+const { validationRulesDataUser, validateCreateUser, validateUpdateUser} = require('../../middleware/validationUserData');
 
 //Instanacia del Router.
 const router = Router();
@@ -15,10 +15,10 @@ router.get('/', userController.getAllUsers);
 router.get('/:idUser', userController.getUser);
 
 //Registra un nuevo usuario.
-router.post('/create', userValidationRulesDataUser(), validateCreateUser, userController.createUser);
+router.post('/create', validationRulesDataUser(), validateCreateUser, userController.createUser);
 
 //Actualiza la informacion de un usuario.
-router.put('/:idUser', userValidationRulesDataUser(), validateUpdateUser, userController.updateUser);
+router.put('/:idUser', validationRulesDataUser(), validateUpdateUser, userController.updateUser);
 
 //Elimina un usuario con un idUsuario especifico...
 router.delete('/:idUser', userController.deleteUser);

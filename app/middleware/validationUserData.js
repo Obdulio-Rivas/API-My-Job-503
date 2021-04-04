@@ -8,7 +8,7 @@ const passwordRules = {
 
 //Configuraciones y validaciones.
 /*Validaciones de la informacion que se envia para la creacion y actualizacion de un usuario nuevo.*/
-const userValidationRulesDataUser = () => {
+const validationRulesDataUser = () => {
     return [
         check('name', 'El campo nombre es requerido!').trim().not().isEmpty(),
         check('lastname', 'El campo apellido es requerido!').trim().not().isEmpty(),
@@ -30,7 +30,7 @@ const userValidationRulesDataUser = () => {
 }
 
 /*Validaciones de la informacion que se envia para la creacion de un usuario nuevo.*/
-const userValidationRulesRegisterUser = () => {
+const validationRulesRegisterUser = () => {
     return [
         check('name', 'El campo nombre es requerido!').trim().not().isEmpty(),
         check('lastname', 'El campo apellido es requerido!').trim().not().isEmpty(),
@@ -82,7 +82,7 @@ const validateUpdateUser = (req, res, next) => {
 }
 
 /*Validaciones de la informacion que se envia para el inicio de sesion.*/
-const userValidationRulesLogin = () => {
+const validationRulesLogin = () => {
     return [
         check('email', 'El campo correo es requerido!').trim().isEmail(),
         check('password', 'El campo contraseña es requerido!').not().isEmpty(),
@@ -103,13 +103,13 @@ const validateLoginUser = (req, res, next) => {
 }
 
 /*Validaciones de la informacion que se envia para el inicio de sesion.*/
-const userValidationRulesLoginGoogle = () => {
+const validationRulesLoginGoogle = () => {
     return [
         check('id_token', 'El id_token es necesario!').not().isEmpty()
     ]
 }
   
-const validateLoginGoogleUser = (req, res, next) => {
+const validateLoginGoogle = (req, res, next) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
         return res.status(200).json({
@@ -127,9 +127,9 @@ module.exports = {
     validateCreateUser,
     validateUpdateUser,
     validateRegisterUser,
-    validateLoginGoogleUser,
-    userValidationRulesLogin,
-    userValidationRulesDataUser,
-    userValidationRulesLoginGoogle,
-    userValidationRulesRegisterUser
+    validateLoginGoogle,
+    validationRulesLogin,
+    validationRulesDataUser,
+    validationRulesLoginGoogle,
+    validationRulesRegisterUser
 }

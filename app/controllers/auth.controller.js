@@ -2,7 +2,7 @@ const moment = require('moment');
 const bcryptJS = require('bcryptjs');
 //Middleware's.
 const authJwt = require('../middleware/authJwt');
-const googleVerify = require('../middleware/googleVerify');
+const verifyGoogle = require('../middleware/verifyGoogle');
 //Helper´s
 const { sendConfirmationEmail } = require('../helpers/sendMail');
 //Instancia del Model Usuario para la BD.
@@ -146,7 +146,7 @@ async function signInGoogleUser(req, res){
     //Bloque try
     try {
         //Validamos el id_token del inicio de sesion de google.
-        const { name, lastname, imgURL, email, state } = await googleVerify(id_token);
+        const { name, lastname, imgURL, email, state } = await verifyGoogle(id_token);
         //Validamos si existe ya un usuario con ese correo.
         const user = await User.findOne({ where: { email: email } });
         if (user !== null) {

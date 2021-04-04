@@ -8,7 +8,7 @@ const authJwt = require('../middleware/authJwt')
 
 //Ruta Inicial.
 router.get('/', (req, res) =>{
-    res.sendFile(__dirname + '/public/pageApiWiki.html');
+    res.sendFile('/' + __dirname.split('/', 2)[1] + '/public/pageApiWiki.html');
 });
 
 //Rutas de Login, Logout de Usuarios.
