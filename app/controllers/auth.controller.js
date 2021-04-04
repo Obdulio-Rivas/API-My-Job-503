@@ -244,14 +244,14 @@ async function confirmEmailUser(req, res){
                 userData: user
             });
             //De manera local se usa __dir_name antes de la ruta
-            res.sendFile(__dirname + 'public/pageConfirmation.html');
+            res.sendFile('../../public/pageConfirmation.html');
         }else{
             //Respondemos con una vista.
-            res.sendFile(__dirname + 'public/pageConfirmation.html');
+            res.sendFile('../../public/pageConfirmation.html');
         }
     } catch (error) {        
         //Respondemos con una vista.
-        res.sendFile(__dirname + 'public/pageConfirmation.html');
+        res.sendFile('../../public/pageConfirmation.html');
     }
 }
 
