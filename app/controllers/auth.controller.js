@@ -237,16 +237,9 @@ async function confirmEmailUser(req, res){
             //Actualizamos el estado del usuario
             //user.state = 2;
             //await user.save();
-            const ruta = __dirname.split('/', 2);
             //Respondemos con una vista.
-            res.status(200).json({
-                isSuccessful: true,
-                rowsAfectadas: 1,
-                msg: "Actualizado!",
-                userData: ruta
-            });
             //De manera local se usa __dir_name antes de la ruta
-            //res.sendFile(ruta+'/public/pageConfirmation.html');
+            res.sendFile('/' + __dirname.split('/', 2)[1] + '/public/pageConfirmation.html');
         }else{
             //Respondemos con una vista.
             //res.sendFile(__dirname + 'public/pageConfirmation.html');
