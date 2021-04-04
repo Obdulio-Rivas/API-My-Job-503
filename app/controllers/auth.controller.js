@@ -252,7 +252,7 @@ async function confirmEmailUser(req, res){
                 isSuccessful: true,
                 rowsAfectadas: 0,
                 msg: "Actualizado!",
-                userData: __dirname + 'public/pageConfirmation.html'
+                userData: path.join(__dirname, '../public', 'index1.html')
             });
         }
     } catch (error) {        
