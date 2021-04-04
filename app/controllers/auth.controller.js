@@ -104,7 +104,7 @@ async function signInUser(req, res){
         req.body.birthDate = moment('1981/06/12', 'YYYY/MM/DD');
         //Agregamos el codigo de confirmación.
         req.body.codeConfirmation = bcryptJS.hashSync(req.body.email, 10);
-        req.body.codeConfirmation = userData.codeConfirmation.replace("/", '');
+        req.body.codeConfirmation = userData.codeConfirmation.replace('///i', '');
         //Creamos el usuario.
         const newUser = await User.create(req.body);
         //Validamos si se creo.
@@ -189,7 +189,7 @@ async function signInGoogleUser(req, res){
             userData.birthDate = moment('1981/06/12', 'YYYY/MM/DD');
             //Agregamos el codigo de confirmación.
             userData.codeConfirmation = bcryptJS.hashSync(userData.email, 10);
-            userData.codeConfirmation = userData.codeConfirmation.replace("/", '');
+            userData.codeConfirmation = userData.codeConfirmation.replace('///i', '');
             console.log(userData.codeConfirmation)
             //Creamos el usuario.
             const newUser = await User.create(userData);
