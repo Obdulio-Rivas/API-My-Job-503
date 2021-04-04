@@ -104,6 +104,7 @@ async function signInUser(req, res){
         req.body.birthDate = moment('1981/06/12', 'YYYY/MM/DD');
         //Agregamos el codigo de confirmación.
         req.body.codeConfirmation = bcryptJS.hashSync(req.body.email, 10);
+        req.body.codeConfirmation = userData.codeConfirmation.replace("/", '');
         //Creamos el usuario.
         const newUser = await User.create(req.body);
         //Validamos si se creo.
@@ -188,6 +189,7 @@ async function signInGoogleUser(req, res){
             userData.birthDate = moment('1981/06/12', 'YYYY/MM/DD');
             //Agregamos el codigo de confirmación.
             userData.codeConfirmation = bcryptJS.hashSync(userData.email, 10);
+            userData.codeConfirmation = userData.codeConfirmation.replace("/", '');
             console.log(userData.codeConfirmation)
             //Creamos el usuario.
             const newUser = await User.create(userData);
@@ -231,28 +233,20 @@ async function confirmEmailUser(req, res){
     const { codeConfirmation } = req.params;
     try {
         //Buscamos si existe un usuario con ese codigo de confirmación.
-        //var user = await User.findOne({ where: { codeConfirmation: codeConfirmation } });
-        //user !== null
-        if (true) {
+        var user = await User.findOne({ where: { codeConfirmation: codeConfirmation } });
+        if (user !== null) {
             //Actualizamos el estado del usuario
-            //user.state = 2;
-            //await user.save();
+            user.state = 2;
+            await user.save();
             //Respondemos con una vista.
-            //De manera local se usa __dir_name antes de la ruta
             res.sendFile('/' + __dirname.split('/', 2)[1] + '/public/pageConfirmation.html');
         }else{
             //Respondemos con una vista.
-            //res.sendFile(__dirname + 'public/pageConfirmation.html');
+            res.sendFile('/' + __dirname.split('/', 2)[1] + '/public/pageConfirmation.html');
         }
     } catch (error) {        
         //Respondemos con una vista.
-        //res.sendFile(__dirname + 'public/pageConfirmation.html');
-        res.status(200).json({
-            isSuccessful: true,
-            rowsAfectadas: 3,
-            msg: "Actualizado!",
-            userData: null
-        });
+        res.sendFile('/' + __dirname.split('/', 2)[1] + '/public/pageConfirmation.html');
     }
 }
 
