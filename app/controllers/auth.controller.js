@@ -231,11 +231,12 @@ async function confirmEmailUser(req, res){
     const { codeConfirmation } = req.params;
     try {
         //Buscamos si existe un usuario con ese codigo de confirmación.
-        var user = await User.findOne({ where: { codeConfirmation: codeConfirmation } });
-        if (user !== null) {
+        //var user = await User.findOne({ where: { codeConfirmation: codeConfirmation } });
+        //user !== null
+        if (true) {
             //Actualizamos el estado del usuario
-            user.state = 2;
-            await user.save();
+            //user.state = 2;
+            //await user.save();
             //Respondemos con una vista.
             res.status(200).json({
                 isSuccessful: true,
