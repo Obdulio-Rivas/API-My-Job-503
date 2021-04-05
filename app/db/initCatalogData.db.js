@@ -1,6 +1,6 @@
 const moment = require('moment');
 const bcryptJS = require('bcryptjs');
-const cryprto = require('crypto');
+const crypto = require('crypto');
 
 //Data
 const initRoleData = [
