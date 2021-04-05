@@ -112,6 +112,7 @@ async function signInUser(req, res){
             let rowsAfected = Object.keys(newUser).length;
             //Generamos el JSON del usuario.
             const userData = userDataInit(newUser);
+            userData.socialSingIn = 0;
             //Enviamos el correo con los pasos faltantes.
             sendConfirmationEmail(userData.name, userData.email, userData.codeConfirmation);
             //Respondemos la solicitud.
