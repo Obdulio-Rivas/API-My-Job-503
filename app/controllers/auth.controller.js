@@ -104,7 +104,7 @@ async function signInUser(req, res){
         req.body.birthDate = moment('1981/06/12', 'YYYY/MM/DD');
         //Agregamos el codigo de confirmación.
         req.body.codeConfirmation = bcryptJS.hashSync(req.body.email, 10);
-        req.body.codeConfirmation = userData.codeConfirmation.replace('///i', '');
+        req.body.codeConfirmation = req.body.codeConfirmation.replace('///i', '');
         //Creamos el usuario.
         const newUser = await User.create(req.body);
         //Validamos si se creo.
