@@ -235,18 +235,24 @@ async function confirmEmailUser(req, res){
         //Buscamos si existe un usuario con ese codigo de confirmación.
         var user = await User.findOne({ where: { codeConfirmation: codeConfirmation } });
         if (user !== null) {
-            //Actualizamos el estado del usuario
-            user.state = 2;
-            await user.save();
-            //Respondemos con una vista.
-            res.sendFile('/' + __dirname.split('/', 2)[1] + '/public/pageConfirmation.html');
+            //Validamos que el estado del usuario aun sea pendiente = 1
+            if(user.state == 1){                
+                //Actualizamos el estado del usuario
+                user.state = 2;
+                await user.save();
+                //Respondemos con una vista.
+                res.sendFile('/' + __dirname.split('/', 2)[1] + '/public/pageConfirmation.html');
+            }else{
+                //Respondemos con una vista.
+                res.sendFile('/' + __dirname.split('/', 2)[1] + '/public/page404.html');
+            }
         }else{
             //Respondemos con una vista.
-            res.sendFile('/' + __dirname.split('/', 2)[1] + '/public/pageConfirmation.html');
+            res.sendFile('/' + __dirname.split('/', 2)[1] + '/public/page404.html');
         }
     } catch (error) {        
         //Respondemos con una vista.
-        res.sendFile('/' + __dirname.split('/', 2)[1] + '/public/pageConfirmation.html');
+        res.sendFile('/' + __dirname.split('/', 2)[1] + '/public/page404.html');
     }
 }
 
