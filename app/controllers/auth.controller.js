@@ -126,7 +126,7 @@ async function signInUser(req, res){
                 isSuccessful: false,
                 rowsAfectadas: 0,
                 msg: "No se pudo registrar el usuario!",
-                userData: newUser
+                userData: null
             });
         }
     }else{
