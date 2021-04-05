@@ -1,5 +1,6 @@
 const moment = require('moment');
 const bcryptJS = require('bcryptjs');
+const crypto = require('crypto');
 //Middleware's.
 const authJwt = require('../middleware/authJwt');
 const verifyGoogle = require('../middleware/verifyGoogle');
@@ -103,8 +104,7 @@ async function signInUser(req, res){
         //Validamos y formateamos la fecha de nacimiento.
         req.body.birthDate = moment('1981/06/12', 'YYYY/MM/DD');
         //Agregamos el codigo de confirmación.
-        req.body.codeConfirmation = bcryptJS.hashSync(req.body.email, 10);
-        req.body.codeConfirmation = req.body.codeConfirmation.replace('/[^a-zA-Z ]/g', '');
+        req.body.codeConfirmation = crypto.randomBytes(20).toString('hex');
         //Creamos el usuario.
         const newUser = await User.create(req.body);
         //Validamos si se creo.
@@ -189,8 +189,7 @@ async function signInGoogleUser(req, res){
             //Fecha de nacimiento por default.
             userData.birthDate = moment('1981/06/12', 'YYYY/MM/DD');
             //Agregamos el codigo de confirmación.
-            userData.codeConfirmation = bcryptJS.hashSync(userData.email, 10);
-            userData.codeConfirmation = userData.codeConfirmation.replace('/[^a-zA-Z ]/g', '');
+            userData.codeConfirmation = crypto.randomBytes(20).toString('hex');
             console.log(userData.codeConfirmation)
             //Creamos el usuario.
             const newUser = await User.create(userData);

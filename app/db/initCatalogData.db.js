@@ -1,5 +1,6 @@
 const moment = require('moment');
-const bcryptJS= require('bcryptjs');
+const bcryptJS = require('bcryptjs');
+const cryprto = require('crypto');
 
 //Data
 const initRoleData = [
@@ -31,7 +32,7 @@ const initUserData = [
         //Usuario.
         email: '2552772016@mail.utec.edu.sv',
         password: bcryptJS.hashSync('Password123.', 10),
-        codeConfirmation: bcryptJS.hashSync('2552772016@mail.utec.edu.sv', 10),
+        codeConfirmation: crypto.randomBytes(20).toString('hex'),
         socialSingIn: false,
         //Llave foranea.
         idRole: 1,
@@ -52,7 +53,7 @@ const initUserData = [
         //Usuario.
         email: '2507752016@mail.utec.edu.sv',
         password: bcryptJS.hashSync('Password123.', 10),
-        codeConfirmation: bcryptJS.hashSync('2507752016@mail.utec.edu.sv', 10),
+        codeConfirmation: crypto.randomBytes(20).toString('hex'),
         socialSingIn: false,
         //Llave foranea.
         idRole: 1,
@@ -73,7 +74,7 @@ const initUserData = [
         //Usuario.
         email: '2511012016@mail.utec.edu.sv',
         password: bcryptJS.hashSync('Password123.', 10),
-        codeConfirmation: bcryptJS.hashSync('2511012016@mail.utec.edu.sv', 10),
+        codeConfirmation: crypto.randomBytes(20).toString('hex'),
         socialSingIn: false,
         //Llave foranea.
         idRole: 1,
@@ -94,7 +95,7 @@ const initUserData = [
         //Usuario.
         email: '2556392016@mail.utec.edu.sv',
         password: bcryptJS.hashSync('Password123.', 10),
-        codeConfirmation: bcryptJS.hashSync('2556392016@mail.utec.edu.sv', 10),
+        codeConfirmation: crypto.randomBytes(20).toString('hex'),
         socialSingIn: false,
         //Llave foranea.
         idRole: 1,
@@ -115,7 +116,7 @@ const initUserData = [
         //Usuario.
         email: '2511802016@mail.utec.edu.sv',
         password: bcryptJS.hashSync('Password123.', 10),
-        codeConfirmation: bcryptJS.hashSync('2511802016@mail.utec.edu.sv', 10),
+        codeConfirmation: crypto.randomBytes(20).toString('hex'),
         socialSingIn: false,
         //Llave foranea.
         idRole: 1,
