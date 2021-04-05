@@ -24,6 +24,8 @@ const validationRulesDataUser = () => {
         check('email', 'El campo correo es requerido!').trim().isEmail(),
         check('password', 'El campo contraseña es requerido!').trim().not().isEmpty(),
         check('idRole', 'El campo tipo es requerido!').trim().not().isEmpty(),
+        check('codeConfirmation', 'El campo codigo de confirmacion es requerido!').trim().not().isEmpty(),
+        check('socialSingIn', 'El campo social Sing In es requerido!').trim().not().isEmpty(),
         check('state', 'El estado es requerido!').trim().not().isEmpty(),
         check('password', 'Por favor ingrese una contraseña de al menos 8 caracteres y contenga al menos una mayúscula, al menos una minúscula, al menos un carácter especial.').isLength({ min: passwordRules.min }).matches(passwordRules.regExpChain,)
     ]
@@ -37,6 +39,8 @@ const validationRulesRegisterUser = () => {
         check('email', 'El campo correo es requerido!').trim().isEmail(),
         check('password', 'El campo contraseña es requerido!').trim().not().isEmpty(),
         check('idRole', 'El campo tipo es requerido!').trim().not().isEmpty(),
+        check('codeConfirmation', 'El campo codigo de confirmacion es requerido!').trim().not().isEmpty(),
+        check('socialSingIn', 'El campo social Sing In es requerido!').trim().not().isEmpty(),
         check('state', 'El estado es requerido!').trim().not().isEmpty(),
         check('password', 'Por favor ingrese una contraseña de al menos 8 caracteres y contenga al menos una mayúscula, al menos una minúscula, al menos un carácter especial.').isLength({ min: passwordRules.min }).matches(passwordRules.regExpChain,)
     ]
