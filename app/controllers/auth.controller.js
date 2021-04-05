@@ -236,6 +236,7 @@ async function confirmEmailUser(req, res){
         var user = await User.findOne({ where: { codeConfirmation: codeConfirmation } });
         if (user !== null) {
             //Validamos que el estado del usuario aun sea pendiente = 1
+            console.log(user.state)
             if(user.state === 1){                
                 //Actualizamos el estado del usuario
                 user.state = 2;
