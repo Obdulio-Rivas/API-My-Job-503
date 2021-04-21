@@ -56,14 +56,11 @@ async function createCompany(req, res) {
     const company = await Company.findOne({ where: { nameCompany: nameCompany } });
     //Validamos si se encontraron coincidencias.
     if(!company){
-        //Obtenemos el id del usuario gestor de la compañia.
-        // Sacarlo del jwt
-        const idUser = req.body.idUser;
         //Creamos la compañia.
         const newCompany = await Company.create(req.body);
         //Validamos si se creo.
         if(newCompany){
-            let rowsAfected = Object.keys(newUser).length;
+            let rowsAfected = Object.keys(newCompany).length;
             res.status(200).json({
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
@@ -84,7 +81,7 @@ async function createCompany(req, res) {
         res.status(200).json({
             isSuccessful: false,
             rowsAfectadas: 0,
-            msg: `Error ya existe un usuario, registrado con el email ${email}`,
+            msg: `Error ya existe una compañia, registrada con ese nombre ${nameCompany}`,
             data: null,
             jwt: req.jwt
         });
@@ -92,76 +89,82 @@ async function createCompany(req, res) {
 }
 
 //Obtener un usuario por id.
-async function updateUser(req, res) {
-    let idUser = req.params.idUser;
-    if(idUser){
-        const user = await User.update(req.body, {
-            where: { idUser: idUser}
+async function updateCompany(req, res) {
+    let idCompany = req.params.idCompany;
+    if(idCompany){
+        const company = await Company.update(req.body, {
+            where: { idCompany: idCompany}
         });
         //Validamos si se actualizo.
-        let rowsAfected = Object.keys(user).length;
-        if(rowsAfected>0){
+        let rowsAfected = Object.keys(company).length;
+        if(company[0]>0){
             res.status(200).json({
                 ok: true,
                 rowsAfected: rowsAfected,
-                msg: "Usuario Actualizado con exito!",
-                data: user
+                msg: "Compañia Actualizado con exito!",
+                data: company,
+                jwt: req.jwt
             });    
         }else{
             res.status(200).json({
                 ok: false,
                 rowsAfected: rowsAfected,
-                msg: "No se pudo Actualizar el usuario!",
-                data: user
+                msg: "No se pudo Actualizar la compañia!",
+                data: null,
+                jwt: req.jwt
             });
         }
     }else{
         res.status(200).json({
             ok: false,
             rowsAfected: 0,
-            msg: "No se pudo Actualizar el usuario!",
-            data: null
+            msg: "No se pudo Actualizar la compañia!",
+            data: null,
+            jwt: req.jwt
         });
     }
 }
 
-async function deleteUser(req, res){
-    let idUser = req.params.idUser;
-    if(idUser){
-        const user = await User.destroy({
-            where: { idUser: idUser}
+async function deleteCompany(req, res){
+    let idCompany = req.params.idCompany;
+    if(idCompany){
+        const company = await Company.destroy({
+            where: { idCompany: idCompany}
         });
         //Validamos si se actualizo.
-        let rowsAfected = user;
+        let rowsAfected = company;
         if(rowsAfected>0){
             res.status(200).json({
                 ok: true,
                 rowsAfected: rowsAfected,
-                msg: "Usuario Eliminado con exito!",
-                data: user
+                msg: "Compañia Eliminada con exito!",
+                data: company,
+                jwt: req.jwt
             });    
         }else{
             res.status(200).json({
                 ok: false,
                 rowsAfected: rowsAfected,
-                msg: "No se pudo Eliminar el usuario!",
-                data: user
+                msg: "No se pudo Eliminar la compañia!",
+                data: company,
+                jwt: req.jwt
             });
         }
     }else{
         res.status(200).json({
             ok: false,
             rowsAfected: 0,
-            msg: "No se pudo Eliminar el usuario!",
-            data: null
+            msg: "No se pudo Eliminar la compañia!",
+            data: company,
+            jwt: req.jwt
         });
     }
 }
 
 module.exports = {
-    getUser,
-    getAllUsers,
-    createUser,
-    updateUser,
-    deleteUser
+    getCompany,
+    getAllCompanies,
+    createCompany,
+    updateCompany,
+    deleteCompany
 };

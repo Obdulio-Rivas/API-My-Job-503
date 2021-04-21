@@ -104,6 +104,26 @@ const validateLoginUser = (req, res, next) => {
     return next();
 }
 
+/*Validaciones para actualizar el jwt.*/
+const validationJwtIsActive = () => {
+    return [
+        check('user-access-token', 'El jwt es necesario!').not().isEmpty()
+    ]
+}
+  
+const validateJwtIsActive = (req, res, next) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(200).json({
+            isSuccessful: false,
+            rowsAfected: 0,
+            msg: "Imposible evaluar el jwt.",
+            errors: errors.array()
+        });
+    }
+    return next();
+}
+
 /*Validaciones de la informacion que se envia para el inicio de sesion.*/
 const validationRulesLoginGoogle = () => {
     return [
@@ -130,7 +150,9 @@ module.exports = {
     validateUpdateUser,
     validateRegisterUser,
     validateLoginGoogle,
+    validateJwtIsActive,
     validationRulesLogin,
+    validationJwtIsActive,
     validationRulesDataUser,
     validationRulesLoginGoogle,
     validationRulesRegisterUser

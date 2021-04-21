@@ -39,6 +39,15 @@ function userDataInit(user){
     return userData;
 }
 
+async function refrehsJwt(req, res){
+    res.status(200).json({
+        isSuccessful: true,
+        rowsAfected: rowsAfected,
+        msg: "JWT validado y actualizado correctamente!",
+        jwt: req.jwt
+    });
+}
+
 //Iniciar sesion usuario.
 async function loginUser(req, res){
     const rowsAfected = 0;
@@ -259,6 +268,7 @@ async function confirmEmailUser(req, res){
 module. exports = {
     loginUser,
     signInUser,
+    refrehsJwt,
     signInGoogleUser,
     confirmEmailUser,
 }

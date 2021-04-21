@@ -2,7 +2,16 @@ const {Router} = require('express');
 //Controller's
 const authController = require('../../controllers/auth.controller');
 //Middleware's...
-const { validationRulesLogin, validateLoginUser, validationRulesRegisterUser, validateRegisterUser, validationRulesLoginGoogle, validateLoginGoogle} = require('../../middleware/validationUserData');
+const { 
+    validationRulesLogin, 
+    validateLoginUser, 
+    validationRulesRegisterUser, 
+    validateRegisterUser, 
+    validationRulesLoginGoogle, 
+    validateLoginGoogle,
+    validationJwtIsActive,
+    validateJwtIsActive
+} = require('../../middleware/validationUserData');
 
 //Instanacia del Router.
 const router = Router();
@@ -11,6 +20,8 @@ const router = Router();
 router.post('/login', validationRulesLogin(), validateLoginUser, authController.loginUser);
 //Permite iniciar session o registrarse (En caso no se este ya registrado) a un usuario con una cuenta de google.
 router.post('/google', validationRulesLoginGoogle(), validateLoginGoogle, authController.signInGoogleUser);
+//Permite actualizar el jwt.
+router.post('/updateJwt', validationJwtIsActive(), validateJwtIsActive, authController.refrehsJwt);
 
 //Permite registrarse en la app como un usuario enviando todos los datos basicos requeridos.
 router.post('/newUser', validationRulesRegisterUser(), validateRegisterUser, authController.signInUser);
