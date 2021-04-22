@@ -59,7 +59,7 @@ async function createVacant(req, res) {
   const state = 1;
   const idCompany = req.body.idCompany;
   const titleVacant = req.body.titleVacant;
-  const vacant = await Curriculum.findOne({
+  const vacant = await Vacant.findOne({
     where: {
       idCompany: idCompany,
       titleVacant: titleVacant,

@@ -17,15 +17,15 @@ const router = Router();
 router.get('/', vacantController.getAllVacants);
 
 //Devuelve solo la compañia con el idCompañia Especificado...
-router.get('/:idCurriculum', vacantController.getVacant);
+router.get('/:idVacante', vacantController.getVacant);
 
 //Registra una nueva compañia.
 router.post('/create', validationRulesRegisterVacant(), validateCreateVacant, vacantController.createVacant);
 
 //Actualiza la informacion de la compañia.
-router.put('/:idCurriculum', validationRulesDataVacant(), validateUpdateVacant, vacantController.updateVacant);
+router.put('/:idVacante', validationRulesDataVacant(), validateUpdateVacant, vacantController.updateVacant);
 
 //Elimina una compañia con un idCompañia especifico...
-router.delete('/:idCurriculum', vacantController.deleteVacant);
+router.delete('/:idVacante', vacantController.deleteVacant);
 
 module.exports = router;
