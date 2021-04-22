@@ -28,14 +28,14 @@ async function getCurriculum(req, res) {
             res.json({
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
-                msg: `Curricylum con id ${idCurriculum} encontrado con exito!`,
+                msg: `Curriculum con id ${idCurriculum} encontrado con exito!`,
                 data: curriculum
             });
         }else{
             res.json({
                 isSuccessful: false,
                 rowsAfected: rowsAfected,
-                msg: `No se ha encontrado una compañia con id ${idCurriculum}`,
+                msg: `No se ha encontrado un curriculum con id ${idCurriculum}`,
                 data: curriculum
             });
         }

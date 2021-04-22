@@ -49,6 +49,39 @@ async function getCompany(req, res) {
     }
 }
 
+//Obtener un compañia por id.
+async function getCompanyByIdUser(req, res) {
+    let rowsAfected = 0;
+    var company = null;
+    const idUser = req.params.idUser;
+    if(idUser){
+        company = await Company.findOne({ where: { idUser: idUser } });
+        if(company){
+            rowsAfected = 1;
+            res.json({
+                isSuccessful: true,
+                rowsAfected: rowsAfected,
+                msg: `Compañia ${company.nameCompany} del usuaio con id ${idUser} encontrado con exito!`,
+                data: company
+            });
+        }else{
+            res.json({
+                isSuccessful: false,
+                rowsAfected: rowsAfected,
+                msg: `No se ha encontrado una compañia con el id de usuario ${idUser}`,
+                data: company
+            });
+        }
+    }else{
+        res.json({
+            isSuccessful: false,
+            rowsAfected: rowsAfected,
+            msg: `No se ha recibido el parametro idUser!`,
+            data: company
+        });
+    }
+}
+
 //Crear compañia.
 async function createCompany(req, res) {
     //Buscamos si existe algun usuario con ese correo ya registrado.
