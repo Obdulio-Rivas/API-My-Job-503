@@ -17,10 +17,10 @@ const router = Router();
 router.get('/', companyController.getAllCompanies);
 
 //Devuelve solo la compañia con el idCompañia Especificado...
-router.get('/:idCompany', companyController.getCompany);
+router.get('/byIdCompany/:idCompany', companyController.getCompany);
 
 //Devuelve solo la compañia con el idCompañia Especificado...
-router.get('/:idUser', companyController.getCompanyByIdUser);
+router.get('/byIdUser/:idUser', companyController.getCompanyByIdUser);
 
 //Registra una nueva compañia.
 router.post('/create', validationRulesRegisterCompany(), validateCreateCompany, companyController.createCompany);
