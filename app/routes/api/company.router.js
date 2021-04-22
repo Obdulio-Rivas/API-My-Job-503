@@ -20,7 +20,7 @@ router.get('/', companyController.getAllCompanies);
 router.get('/:idCompany', companyController.getCompany);
 
 //Devuelve solo la compañia con el idCompañia Especificado...
-router.get('/:idUser', companyController.getCompany);
+router.get('/:idUser', companyController.getCompanyByIdUser);
 
 //Registra una nueva compañia.
 router.post('/create', validationRulesRegisterCompany(), validateCreateCompany, companyController.createCompany);

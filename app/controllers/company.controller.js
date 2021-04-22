@@ -196,6 +196,7 @@ async function deleteCompany(req, res){
 
 module.exports = {
     getCompany,
+    getCompanyByIdUser,
     getAllCompanies,
     createCompany,
     updateCompany,
