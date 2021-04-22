@@ -13,6 +13,7 @@ async function getAllVacants(req, res) {
     rowsAfected: rowsAfected,
     msg: "Vacantes Actuales en la Base de Datos!",
     data: vacants,
+    jwt: req.jwt
   });
 }
 
@@ -29,14 +30,16 @@ async function getVacant(req, res) {
         isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: `Vacante con id ${idVacant} encontrado con exito!`,
-        data: curriculum,
+        data: vacant,
+        jwt: req.jwt
       });
     } else {
       res.json({
         isSuccessful: false,
         rowsAfected: rowsAfected,
         msg: `No se ha encontrado una vacante con id ${idVacant}`,
-        data: curriculum,
+        data: vacant,
+        jwt: req.jwt
       });
     }
   } else {
@@ -44,41 +47,44 @@ async function getVacant(req, res) {
       isSuccessful: false,
       rowsAfected: rowsAfected,
       msg: `No se ha recibido el parametro idVacant!`,
-      data: curriculum,
+      data: vacant,
+      jwt: req.jwt
     });
   }
 }
 
-//Crear compañia.
+//Crear Vacante.
 async function createVacant(req, res) {
-  //Buscamos si existe algun usuario con ese correo ya registrado.
+  //Buscamos si existe alguna vacante con ese titulo de parte de la compañia.
+  const state = 1;
   const idCompany = req.body.idCompany;
   const titleVacant = req.body.titleVacant;
   const vacant = await Curriculum.findOne({
     where: {
       idCompany: idCompany,
-      titleVacant: titleVacant
+      titleVacant: titleVacant,
+      state: state
     },
   });
   //Validamos si se encontraron coincidencias.
   if (!vacant) {
-    //Creamos la compañia.
-    const newCurriculum = await Curriculum.create(req.body);
+    //Creamos la vacante.
+    const newVacant = await Vacant.create(req.body);
     //Validamos si se creo.
-    if (newCurriculum) {
-      let rowsAfected = Object.keys(newCurriculum).length;
+    if (newVacant) {
+      let rowsAfected = Object.keys(newVacant).length;
       res.status(200).json({
         isSuccessful: true,
         rowsAfected: rowsAfected,
-        msg: "Curriculum registrado con exito!",
-        data: newCurriculum,
+        msg: `Vacante ${newVacant.titleVacant} registrado con exito!`,
+        data: newVacant,
         jwt: req.jwt,
       });
     } else {
       res.status(200).json({
         isSuccessful: false,
         rowsAfectadas: 0,
-        msg: "No se pudo registrar el curriculum!",
+        msg: `No se pudo registrar la vacante ${titleVacant} curriculum!`,
         data: null,
         jwt: req.jwt,
       });
@@ -87,7 +93,7 @@ async function createVacant(req, res) {
     res.status(200).json({
       isSuccessful: false,
       rowsAfectadas: 0,
-      msg: `Error ya existe un curriculum, registrado para el usuario ${idUser}`,
+      msg: `Error ya existe una vacante, registrada como ${titleVacant}`,
       data: null,
       jwt: req.jwt,
     });

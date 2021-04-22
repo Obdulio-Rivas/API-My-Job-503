@@ -12,7 +12,8 @@ async function getAllCurriculums(req, res) {
         isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: "Curriculums Actuales en la Base de Datos!",
-        data: curriculums
+        data: curriculums,
+        jwt: req.jwt
     });
 }
 
@@ -29,14 +30,16 @@ async function getCurriculum(req, res) {
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: `Curriculum con id ${idCurriculum} encontrado con exito!`,
-                data: curriculum
+                data: curriculum,
+                jwt: req.jwt
             });
         }else{
             res.json({
                 isSuccessful: false,
                 rowsAfected: rowsAfected,
                 msg: `No se ha encontrado un curriculum con id ${idCurriculum}`,
-                data: curriculum
+                data: curriculum,
+                jwt: req.jwt
             });
         }
     }else{
@@ -44,7 +47,8 @@ async function getCurriculum(req, res) {
             isSuccessful: false,
             rowsAfected: rowsAfected,
             msg: `No se ha recibido el parametro idCurriculum!`,
-            data: curriculum
+            data: curriculum,
+            jwt: req.jwt
         });
     }
 }

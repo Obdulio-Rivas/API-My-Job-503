@@ -8,11 +8,12 @@ const { Company } = require('../db/database.db');
 async function getAllCompanies(req, res) {
     const companies = await Company.findAll();
     let rowsAfected = Object.keys(companies).length;
-    res.json({
+    res.status(200).json({
         isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: "Compañias Actuales en la Base de Datos!",
-        data: companies
+        data: companies,
+        jwt: req.jwt
     });
 }
 
@@ -25,26 +26,29 @@ async function getCompany(req, res) {
         company = await Company.findOne({ where: { idCompany: idCompany } });
         if(company){
             rowsAfected = 1;
-            res.json({
+            res.status(200).json({
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: `Compañia con id ${idCompany} encontrado con exito!`,
-                data: company
+                data: company,
+                jwt: req.jwt
             });
         }else{
-            res.json({
+            res.status(200).json({
                 isSuccessful: false,
                 rowsAfected: rowsAfected,
                 msg: `No se ha encontrado una compañia con id ${idCompany}`,
-                data: company
+                data: company,
+                jwt: req.jwt
             });
         }
     }else{
-        res.json({
+        res.status(200).json({
             isSuccessful: false,
             rowsAfected: rowsAfected,
             msg: `No se ha recibido el parametro idCompany!`,
-            data: company
+            data: company,
+            jwt: req.jwt
         });
     }
 }
@@ -58,26 +62,29 @@ async function getCompanyByIdUser(req, res) {
         company = await Company.findOne({ where: { idUser: idUser } });
         if(company){
             rowsAfected = 1;
-            res.json({
+            res.status(200).json({
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: `Compañia ${company.nameCompany} del usuaio con id ${idUser} encontrado con exito!`,
-                data: company
+                data: company,
+                jwt: req.jwt
             });
         }else{
-            res.json({
+            res.status(200).json({
                 isSuccessful: false,
                 rowsAfected: rowsAfected,
                 msg: `No se ha encontrado una compañia con el id de usuario ${idUser}`,
-                data: company
+                data: company,
+                jwt: req.jwt
             });
         }
     }else{
-        res.json({
+        res.status(200).json({
             isSuccessful: false,
             rowsAfected: rowsAfected,
             msg: `No se ha recibido el parametro idUser!`,
-            data: company
+            data: company,
+            jwt: req.jwt
         });
     }
 }

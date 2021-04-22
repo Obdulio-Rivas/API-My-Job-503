@@ -12,7 +12,8 @@ async function getAllUsers(req, res) {
         isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: "Usuarios Actuales en la Base de Datos!",
-        data: users
+        data: users,
+        jwt: req.jwt
     });
 }
 
@@ -29,14 +30,16 @@ async function getUser(req, res) {
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: `Usuario con id ${idUser} encontrado con exito!`,
-                data: user
+                data: user,
+                jwt: req.jwt
             });
         }else{
             res.json({
                 isSuccessful: false,
                 rowsAfected: rowsAfected,
                 msg: `No se ha encontrado un usuario con id ${idUser}`,
-                data: user
+                data: user,
+                jwt: req.jwt
             });
         }
     }else{
@@ -44,7 +47,8 @@ async function getUser(req, res) {
             isSuccessful: false,
             rowsAfected: rowsAfected,
             msg: `No se a recibido el parametro idUsuario!`,
-            data: user
+            data: user,
+            jwt: req.jwt
         });
     }
 }
@@ -106,14 +110,16 @@ async function updateUser(req, res) {
                 ok: true,
                 rowsAfected: rowsAfected,
                 msg: "Usuario Actualizado con exito!",
-                data: user
+                data: user,
+                jwt: req.jwt
             });    
         }else{
             res.status(200).json({
                 ok: false,
                 rowsAfected: rowsAfected,
                 msg: "No se pudo Actualizar el usuario!",
-                data: user
+                data: user,
+                jwt: req.jwt
             });
         }
     }else{
@@ -121,7 +127,8 @@ async function updateUser(req, res) {
             ok: false,
             rowsAfected: 0,
             msg: "No se pudo Actualizar el usuario!",
-            data: null
+            data: null,
+            jwt: req.jwt
         });
     }
 }
@@ -139,14 +146,16 @@ async function deleteUser(req, res){
                 ok: true,
                 rowsAfected: rowsAfected,
                 msg: "Usuario Eliminado con exito!",
-                data: user
+                data: user,
+                jwt: req.jwt
             });    
         }else{
             res.status(200).json({
                 ok: false,
                 rowsAfected: rowsAfected,
                 msg: "No se pudo Eliminar el usuario!",
-                data: user
+                data: user,
+                jwt: req.jwt
             });
         }
     }else{
@@ -154,7 +163,8 @@ async function deleteUser(req, res){
             ok: false,
             rowsAfected: 0,
             msg: "No se pudo Eliminar el usuario!",
-            data: null
+            data: null,
+            jwt: req.jwt
         });
     }
 }
