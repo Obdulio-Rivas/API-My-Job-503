@@ -9,7 +9,12 @@ module.exports = (sequelize, type) => {
         //Nombre del curriculum.
         curriculum: type.STRING,
         //Experencia laboral.
-        workExperience: type.STRING,
+        expWorkTitleOne: type.STRING,
+        expWorKCompanyOne: type.STRING,
+        expWorkedTimeOne: type.INTEGER,
+        expWorkTitleTwo: type.STRING,
+        expWorKCompanyTwo: type.STRING,
+        expWorkedTimeTwo: type.INTEGER,
         //Estudios
         basicStudies: type.STRING,
         midLevelStudies: type.STRING,
@@ -19,7 +24,9 @@ module.exports = (sequelize, type) => {
         masterDegree:  type.STRING,
         specialty:  type.STRING,
         complementaryStudies: type.STRING,
-        language: type.STRING,
+        nativeLanguage: type.INTEGER,
+        otherLanguage: type.INTEGER,
+        otherLanguageLevel: type.INTEGER,
         referenceNameOne: type.STRING,
         referenceTelOne: type.STRING,
         referenceNameTwo: type.STRING,

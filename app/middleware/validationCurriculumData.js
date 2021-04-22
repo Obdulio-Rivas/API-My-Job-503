@@ -6,7 +6,9 @@ const validationRulesDataCurriculum = () => {
     return [
         check('idCurriculum', 'El ID del curriculum es requerido!').trim().not().isEmpty(),
         check('curriculum', 'El campo nombre curriculum es requerido!').trim().not().isEmpty(),
-        check('workExperience', 'La experiencia laboral es requerida!').trim().not().isEmpty(),
+        check('expWorkTitleOne', 'El puesto de experiencia laboral es requerido!').trim().not().isEmpty(),
+        check('expWorKCompanyOne', 'El nombre de la compañia donde trabajo es requerido!').trim().not().isEmpty(),
+        check('expWorkedTimeOne', 'El tiempo que trabajo es requerido!').trim().not().isEmpty(),
         check('basicStudies', 'El campo Estudio basicos es requerido!').trim().not().isEmpty(),
         check('midLevelStudies', 'El campo Estudio medios es requerido!').trim().not().isEmpty(),
         check('advancedStudies', 'El campo Estudio avanzados es requerido!').trim().not().isEmpty(),
@@ -15,11 +17,9 @@ const validationRulesDataCurriculum = () => {
         check('masterDegree', 'El campo master degree es requerido!').trim().not().isEmpty(),
         check('specialty', 'El campo especialidad es requerido!').trim().not().isEmpty(),
         check('complementaryStudies', 'El campo estudios complementarios es requerido!').trim().not().isEmpty(),
-        check('language', 'El campo lenguajes es requerido!').trim().not().isEmpty(),
+        check('nativeLanguage', 'El campo lenguaje Nativo es requerido!').trim().not().isEmpty(),
         check('referenceNameOne', 'El campo referencia uno requerido!').trim().not().isEmpty(),
         check('referenceTelOne', 'El campo telefono referencia uno requerido!').trim().not().isEmpty(),
-        check('referenceNameTwo', 'El campo referencia dos requerido!').trim().not().isEmpty(),
-        check('referenceTelTwo', 'El campo telefono referencia dos requerido!').trim().not().isEmpty(),
         check('idUser', 'El id del usuario es requerido!').trim().not().isEmpty(),
         check('state', 'El estado del curriculum es requerido!').trim().not().isEmpty()
     ]
@@ -29,7 +29,9 @@ const validationRulesDataCurriculum = () => {
 const validationRulesRegisterCurriculum = () => {
     return [
         check('curriculum', 'El campo nombre curriculum es requerido!').trim().not().isEmpty(),
-        check('workExperience', 'La experiencia laboral es requerida!').trim().not().isEmpty(),
+        check('expWorkTitleOne', 'El puesto de experiencia laboral es requerido!').trim().not().isEmpty(),
+        check('expWorKCompanyOne', 'El nombre de la compañia donde trabajo es requerido!').trim().not().isEmpty(),
+        check('expWorkedTimeOne', 'El tiempo que trabajo es requerido!').trim().not().isEmpty(),
         check('basicStudies', 'El campo Estudio basicos es requerido!').trim().not().isEmpty(),
         check('midLevelStudies', 'El campo Estudio medios es requerido!').trim().not().isEmpty(),
         check('advancedStudies', 'El campo Estudio avanzados es requerido!').trim().not().isEmpty(),
@@ -38,11 +40,9 @@ const validationRulesRegisterCurriculum = () => {
         check('masterDegree', 'El campo master degree es requerido!').trim().not().isEmpty(),
         check('specialty', 'El campo especialidad es requerido!').trim().not().isEmpty(),
         check('complementaryStudies', 'El campo estudios complementarios es requerido!').trim().not().isEmpty(),
-        check('language', 'El campo lenguajes es requerido!').trim().not().isEmpty(),
+        check('nativeLanguage', 'El campo lenguaje Nativo es requerido!').trim().not().isEmpty(),
         check('referenceNameOne', 'El campo referencia uno requerido!').trim().not().isEmpty(),
         check('referenceTelOne', 'El campo telefono referencia uno requerido!').trim().not().isEmpty(),
-        check('referenceNameTwo', 'El campo referencia dos requerido!').trim().not().isEmpty(),
-        check('referenceTelTwo', 'El campo telefono referencia dos requerido!').trim().not().isEmpty(),
         check('idUser', 'El id del usuario es requerido!').trim().not().isEmpty(),
         check('state', 'El estado del curriculum es requerido!').trim().not().isEmpty()
     ]

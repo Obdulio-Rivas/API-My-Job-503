@@ -5,6 +5,7 @@ const apiAuthRouter = require('./api/auth.routes');
 const apiUserRouter = require('./api/user.routes');
 const apiCompanyRouter = require('./api/company.router');
 const apiCurriculumRouter = require('./api/curriculum.router');
+const apiVacantRouter = require('./api/vacant.router');
 //Middleware's
 const authJwt = require('../middleware/authJwt')
 
@@ -27,6 +28,7 @@ router.use('/users', authJwt.verifyToken, apiUserRouter);
 router.use('/company', authJwt.verifyToken, apiCompanyRouter);
 //Rutas de CRUD de Curriculum.
 router.use('/curriculum', authJwt.verifyToken, apiCurriculumRouter);
-
+//Rutas de CRUD de las vacantes.
+router.use('/vacant', authJwt.verifyToken, apiVacantRouter);
 
 module.exports = router;

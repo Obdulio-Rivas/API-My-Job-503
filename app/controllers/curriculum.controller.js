@@ -3,12 +3,12 @@ const moment = require('moment')
 //Instancia del Model Company para la BD.
 const { Curriculum } = require('../db/database.db');
 
-//Company controller.
-//Obtener todos las compañias.
+//Curriculum controller.
+//Obtener todos los curriculums.
 async function getAllCurriculums(req, res) {
     const curriculums = await Curriculum.findAll();
     let rowsAfected = Object.keys(curriculums).length;
-    res.json({
+    res.status(200).json({
         isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: "Curriculums Actuales en la Base de Datos!",
@@ -17,7 +17,7 @@ async function getAllCurriculums(req, res) {
     });
 }
 
-//Obtener un compañia por id.
+//Obtener un curriculum por id.
 async function getCurriculum(req, res) {
     let rowsAfected = 0;
     var curriculum = null;
@@ -26,7 +26,7 @@ async function getCurriculum(req, res) {
         curriculum = await Curriculum.findOne({ where: { idCurriculum: idCurriculum } });
         if(curriculum){
             rowsAfected = 1;
-            res.json({
+            res.status(200).json({
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: `Curriculum con id ${idCurriculum} encontrado con exito!`,
@@ -34,7 +34,7 @@ async function getCurriculum(req, res) {
                 jwt: req.jwt
             });
         }else{
-            res.json({
+            res.status(200).json({
                 isSuccessful: false,
                 rowsAfected: rowsAfected,
                 msg: `No se ha encontrado un curriculum con id ${idCurriculum}`,
@@ -43,7 +43,7 @@ async function getCurriculum(req, res) {
             });
         }
     }else{
-        res.json({
+        res.status(200).json({
             isSuccessful: false,
             rowsAfected: rowsAfected,
             msg: `No se ha recibido el parametro idCurriculum!`,

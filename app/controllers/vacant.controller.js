@@ -4,11 +4,11 @@ const moment = require("moment");
 const { Vacant } = require("../db/database.db");
 
 //Company controller.
-//Obtener todos las compañias.
+//Obtener todas las vacantes.
 async function getAllVacants(req, res) {
   const vacants = await Vacant.findAll();
   let rowsAfected = Object.keys(vacants).length;
-  res.json({
+  res.status(200).json({
     isSuccessful: true,
     rowsAfected: rowsAfected,
     msg: "Vacantes Actuales en la Base de Datos!",
@@ -17,7 +17,7 @@ async function getAllVacants(req, res) {
   });
 }
 
-//Obtener un compañia por id.
+//Obtener una vacante por id.
 async function getVacant(req, res) {
   let rowsAfected = 0;
   var vacant = null;
@@ -26,7 +26,7 @@ async function getVacant(req, res) {
     vacant = await Vacant.findOne({ where: { idVacant: idVacant } });
     if (vacant) {
       rowsAfected = 1;
-      res.json({
+      res.status(200).json({
         isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: `Vacante con id ${idVacant} encontrado con exito!`,
@@ -34,7 +34,7 @@ async function getVacant(req, res) {
         jwt: req.jwt
       });
     } else {
-      res.json({
+      res.status(200).json({
         isSuccessful: false,
         rowsAfected: rowsAfected,
         msg: `No se ha encontrado una vacante con id ${idVacant}`,
@@ -43,7 +43,7 @@ async function getVacant(req, res) {
       });
     }
   } else {
-    res.json({
+    res.status(200).json({
       isSuccessful: false,
       rowsAfected: rowsAfected,
       msg: `No se ha recibido el parametro idVacant!`,
@@ -84,7 +84,7 @@ async function createVacant(req, res) {
       res.status(200).json({
         isSuccessful: false,
         rowsAfectadas: 0,
-        msg: `No se pudo registrar la vacante ${titleVacant} curriculum!`,
+        msg: `No se pudo registrar la vacante ${titleVacant}!`,
         data: null,
         jwt: req.jwt,
       });
@@ -100,28 +100,28 @@ async function createVacant(req, res) {
   }
 }
 
-//Obtener un usuario por id.
-async function updateCurriculum(req, res) {
-  let idCurriculum = req.params.idCurriculum;
-  if (idCurriculum) {
-    const curriculum = await Curriculum.update(req.body, {
-      where: { idCurriculum: idCurriculum },
+//Actualizar la vacante.
+async function updateVacant(req, res) {
+  let idVacante = req.params.idVacante;
+  if (idVacante) {
+    const vacant = await Vacant.update(req.body, {
+      where: { idVacante: idVacante },
     });
     //Validamos si se actualizo.
-    let rowsAfected = Object.keys(curriculum).length;
-    if (curriculum[0] > 0) {
+    let rowsAfected = Object.keys(vacant).length;
+    if (vacant[0] > 0) {
       res.status(200).json({
         ok: true,
         rowsAfected: rowsAfected,
-        msg: "Curriculum Actualizado con exito!",
-        data: curriculum,
+        msg: "Vacante Actualizado con exito!",
+        data: vacant,
         jwt: req.jwt,
       });
     } else {
       res.status(200).json({
         ok: false,
         rowsAfected: rowsAfected,
-        msg: "No se pudo Actualizar el curriculum!",
+        msg: "No se pudo Actualizar la vacante!",
         data: null,
         jwt: req.jwt,
       });
@@ -130,35 +130,35 @@ async function updateCurriculum(req, res) {
     res.status(200).json({
       ok: false,
       rowsAfected: 0,
-      msg: "No se pudo Actualizar el curriculum!",
+      msg: "No se pudo Actualizar la vacante!",
       data: null,
       jwt: req.jwt,
     });
   }
 }
 
-async function deleteCurriculum(req, res) {
-  let idCurriculum = req.params.idCurriculum;
-  if (idCurriculum) {
-    const curriculum = await Curriculum.destroy({
-      where: { idCurriculum: idCurriculum },
+async function deleteVacant(req, res) {
+  let idVacant = req.params.idVacant;
+  if (idVacant) {
+    const vacant = await Vacant.destroy({
+      where: { idVacant: idVacant },
     });
     //Validamos si se actualizo.
-    let rowsAfected = curriculum;
+    let rowsAfected = vacant;
     if (rowsAfected > 0) {
       res.status(200).json({
         ok: true,
         rowsAfected: rowsAfected,
-        msg: "Curriculum Eliminado con exito!",
-        data: curriculum,
+        msg: "Vacante Eliminada con exito!",
+        data: vacant,
         jwt: req.jwt,
       });
     } else {
       res.status(200).json({
         ok: false,
         rowsAfected: rowsAfected,
-        msg: "No se pudo Eliminar el curriculum!",
-        data: curriculum,
+        msg: "No se pudo Eliminar la vacante!",
+        data: vacant,
         jwt: req.jwt,
       });
     }
@@ -166,7 +166,7 @@ async function deleteCurriculum(req, res) {
     res.status(200).json({
       ok: false,
       rowsAfected: 0,
-      msg: "No se pudo Eliminar el curriculum!",
+      msg: "No se pudo Eliminar la vacante!",
       data: null,
       jwt: req.jwt,
     });
@@ -174,9 +174,9 @@ async function deleteCurriculum(req, res) {
 }
 
 module.exports = {
-  getCurriculum,
-  getAllCurriculums,
-  createCurriculum,
-  updateCurriculum,
-  deleteCurriculum,
+  getVacant,
+  getAllVacants,
+  createVacant,
+  updateVacant,
+  deleteVacant,
 };

@@ -3,29 +3,29 @@ const {Router} = require('express');
 const vacantController = require('../../controllers/vacant.controller');
 //Middleware's...
 const {
-    validateCreateCurriculum,
-    validateUpdateCurriculum,
-    validationRulesRegisterCurriculum,
-    validationRulesDataCurriculum
-} = require('../../middleware/validationCurriculumData');
+    validateCreateVacant,
+    validateUpdateVacant,
+    validationRulesRegisterVacant,
+    validationRulesDataVacant
+} = require('../../middleware/validationVacantData');
 
 //Instanacia del Router.
 const router = Router();
 
 //Ruta de las Compañias.
 //Devuelve todas las compañias...
-router.get('/', curriculumController.getAllCurriculums);
+router.get('/', vacantController.getAllVacants);
 
 //Devuelve solo la compañia con el idCompañia Especificado...
-router.get('/:idCurriculum', curriculumController.getCurriculum);
+router.get('/:idCurriculum', vacantController.getVacant);
 
 //Registra una nueva compañia.
-router.post('/create', validationRulesRegisterCurriculum(), validateCreateCurriculum, curriculumController.createCurriculum);
+router.post('/create', validationRulesRegisterVacant(), validateCreateVacant, vacantController.createVacant);
 
 //Actualiza la informacion de la compañia.
-router.put('/:idCurriculum', validationRulesDataCurriculum(), validateUpdateCurriculum, curriculumController.updateCurriculum);
+router.put('/:idCurriculum', validationRulesDataVacant(), validateUpdateVacant, vacantController.updateVacant);
 
 //Elimina una compañia con un idCompañia especifico...
-router.delete('/:idCurriculum', curriculumController.deleteCurriculum);
+router.delete('/:idCurriculum', vacantController.deleteVacant);
 
 module.exports = router;
