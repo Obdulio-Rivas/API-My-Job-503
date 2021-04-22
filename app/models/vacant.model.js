@@ -13,9 +13,11 @@ module.exports = (sequelize, type) => {
         minSalary: type.DOUBLE,
         maxSalary: type.DOUBLE,
         quantityVacant: type.INTEGER,
+        requirementOne: type.STRING,
+        requirementTwo: type.STRING,
+        requirementThree: type.STRING,
         state: type.BOOLEAN,
         //llave forarea.
-        idCompany: type.INTEGER,
-        idRequirement: type.INTEGER
+        idCompany: type.INTEGER
     });
 }

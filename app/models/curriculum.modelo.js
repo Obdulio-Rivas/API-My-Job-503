@@ -20,9 +20,12 @@ module.exports = (sequelize, type) => {
         specialty:  type.STRING,
         complementaryStudies: type.STRING,
         language: type.STRING,
+        referenceNameOne: type.STRING,
+        referenceTelOne: type.STRING,
+        referenceNameTwo: type.STRING,
+        referenceTelTwo: type.STRING,
         //Llave foranea.
         idUser: type.INTEGER,
-        idReference: type.INTEGER,
         state: type.BOOLEAN
     });
 }

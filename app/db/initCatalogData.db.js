@@ -98,7 +98,7 @@ const initUserData = [
         codeConfirmation: crypto.randomBytes(20).toString('hex'),
         socialSingIn: false,
         //Llave foranea.
-        idRole: 1,
+        idRole: 3,
         state: 2
     },
     {

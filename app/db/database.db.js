@@ -19,9 +19,7 @@ const UserModel = require('../models/user.model');
 const RoleModel = require('../models/role.model');
 const VacantModel = require('../models/vacant.model');
 const CompanyModel = require('../models/company.model');
-const ReferenceModel = require('../models/reference.model');
 const CurriculumModel = require('../models/curriculum.modelo');
-const RequirementModel = require('../models/requirement.model');
 
 //Instancia de las Tablas....
 //Persona.
@@ -29,9 +27,18 @@ const User = UserModel(sequelize, Sequelize);
 const Role = RoleModel(sequelize, Sequelize);
 const Vacant = VacantModel(sequelize, Sequelize);
 const Company = CompanyModel(sequelize, Sequelize);
-const Reference = ReferenceModel(sequelize, Sequelize);
 const Curriculum = CurriculumModel(sequelize, Sequelize);
-const Requirement = RequirementModel(sequelize, Sequelize);
+//Agregar la tabla de conexion de solicitudes.
+
+//Relaciones.
+//Llaves foraneas de la tabla Curriculum
+User.hasOne(Curriculum, {foreignKey: 'idUser'})
+//Llaves foraneas de la tabla Company
+User.hasOne(Company, {foreignKey: 'idUser'})
+//Llaves foraneas de la tabla User
+User.belongsTo(Role, {foreignKey: 'idRole'})
+//Llaves foraneas de la tabla Vacantes
+Vacant.belongsTo(Company, {foreignKey: 'idCompany'})
 
 //Carga de datos tablas catalogo y datos de prueba.
 const initData = () => {
@@ -89,7 +96,5 @@ module.exports = {
     Role,
     Vacant,
     Company,
-    Reference,
-    Curriculum,
-    Requirement
+    Curriculum
 }
