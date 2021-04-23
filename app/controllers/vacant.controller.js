@@ -90,7 +90,7 @@ async function getVacantsByCategory(req, res) {
 async function getVacantsByIdCompany(req, res) {
   let rowsAfected = 0;
   const idCompany = req.params.idCompany;
-  if (categoryVacant) {
+  if (idCompany) {
     vacants = await Vacant.findAll({ where: { idCompany: idCompany } });
     if (vacants) {
       rowsAfected = Object.keys(vacants).length;
