@@ -19,6 +19,9 @@ router.get('/', vacantController.getAllVacants);
 //Devuelve solo la compañia con el idCompañia Especificado...
 router.get('/:idVacante', vacantController.getVacant);
 
+//Devuelve las vacantes con la categoria Especificada...
+router.get('/filter/:categoryVacant', vacantController.getVacantsByCategory);
+
 //Registra una nueva compañia.
 router.post('/create', validationRulesRegisterVacant(), validateCreateVacant, vacantController.createVacant);
 

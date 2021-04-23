@@ -1,14 +1,15 @@
 module.exports = (sequelize, type) => {
-    return sequelize.define('requirement', {
+    return sequelize.define('application', {
         //Llave Primaria.
-        idRequirement: {
+        idApplication: {
             type: type.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
         //Datos de los requisitos.
-        requirement: type.STRING,
-        description: type.STRING,
-        state: type.BOOLEAN
+        //Llave foranea.
+        idVacant: type.INTEGER,
+        idCurriculum: type.INTEGER,
+        state: type.ENUM('Active', 'Inactive')
     });
 }

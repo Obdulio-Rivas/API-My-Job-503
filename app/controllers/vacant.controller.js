@@ -53,6 +53,41 @@ async function getVacant(req, res) {
   }
 }
 
+async function getVacantsByCategory(req, res) {
+  let rowsAfected = 0;
+  var vacant = null;
+  const categoryVacant = req.params.categoryVacant;
+  if (categoryVacant) {
+    vacants = await Vacant.findAll({ where: { categoryVacant: categoryVacant } });
+    if (vacants) {
+      rowsAfected = Object.keys(vacants).length;
+      res.status(200).json({
+        isSuccessful: true,
+        rowsAfected: rowsAfected,
+        msg: `Vacantes Actuales de la categoria ${categoryVacant}`,
+        data: vacants,
+        jwt: req.jwt
+      });
+    } else {
+      res.status(200).json({
+        isSuccessful: false,
+        rowsAfected: rowsAfected,
+        msg: `No se han encontrado vacantes con la categoria ${categoryVacant}`,
+        data: vacants,
+        jwt: req.jwt
+      });
+    }
+  } else {
+    res.status(200).json({
+      isSuccessful: false,
+      rowsAfected: rowsAfected,
+      msg: `No se ha recibido el parametro categoryVacant!`,
+      data: vacants,
+      jwt: req.jwt
+    });
+  }
+}
+
 //Crear Vacante.
 async function createVacant(req, res) {
   //Buscamos si existe alguna vacante con ese titulo de parte de la compañia.
@@ -176,6 +211,7 @@ async function deleteVacant(req, res) {
 module.exports = {
   getVacant,
   getAllVacants,
+  getVacantsByCategory,
   createVacant,
   updateVacant,
   deleteVacant,
