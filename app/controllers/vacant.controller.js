@@ -55,7 +55,6 @@ async function getVacant(req, res) {
 
 async function getVacantsByCategory(req, res) {
   let rowsAfected = 0;
-  var vacant = null;
   const categoryVacant = req.params.categoryVacant;
   if (categoryVacant) {
     vacants = await Vacant.findAll({ where: { categoryVacant: categoryVacant } });
@@ -82,6 +81,40 @@ async function getVacantsByCategory(req, res) {
       isSuccessful: false,
       rowsAfected: rowsAfected,
       msg: `No se ha recibido el parametro categoryVacant!`,
+      data: vacants,
+      jwt: req.jwt
+    });
+  }
+}
+
+async function getVacantsByIdCompany(req, res) {
+  let rowsAfected = 0;
+  const idCompany = req.params.idCompany;
+  if (categoryVacant) {
+    vacants = await Vacant.findAll({ where: { idCompany: idCompany } });
+    if (vacants) {
+      rowsAfected = Object.keys(vacants).length;
+      res.status(200).json({
+        isSuccessful: true,
+        rowsAfected: rowsAfected,
+        msg: `Vacantes Actuales de la compañia con id ${idCompany}`,
+        data: vacants,
+        jwt: req.jwt
+      });
+    } else {
+      res.status(200).json({
+        isSuccessful: false,
+        rowsAfected: rowsAfected,
+        msg: `No se han encontrado vacantes con el id de compañia ${idCompany}`,
+        data: vacants,
+        jwt: req.jwt
+      });
+    }
+  } else {
+    res.status(200).json({
+      isSuccessful: false,
+      rowsAfected: rowsAfected,
+      msg: `No se ha recibido el parametro idCompany!`,
       data: vacants,
       jwt: req.jwt
     });
@@ -212,6 +245,7 @@ module.exports = {
   getVacant,
   getAllVacants,
   getVacantsByCategory,
+  getVacantsByIdCompany,
   createVacant,
   updateVacant,
   deleteVacant,
