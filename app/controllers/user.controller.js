@@ -63,7 +63,7 @@ async function createUser(req, res) {
         //Encriptamos la contraseña...
         req.body.password = bcryptJS.hashSync(req.body.password, 10);
         //Validamos y formateamos la fecha de nacimiento.
-        req.body.birthDate = moment(req.body.birthDate, 'YYYY/MM/DD');
+        req.body.birthDate = moment(req.body.birthDate, 'YYYY-MM-DD');
         //Creamos el usuario.
         const newUser = await User.create(req.body);
         //Validamos si se creo.

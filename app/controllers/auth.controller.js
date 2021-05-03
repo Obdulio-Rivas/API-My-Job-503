@@ -111,7 +111,7 @@ async function signInUser(req, res){
         //Encriptamos la contraseña...
         req.body.password = bcryptJS.hashSync(req.body.password, 10);
         //Validamos y formateamos la fecha de nacimiento.
-        req.body.birthDate = moment('1981/06/12', 'YYYY/MM/DD');
+        req.body.birthDate = moment(req.body.birthDate, 'YYYY-MM-DD');
         //Agregamos el codigo de confirmación.
         req.body.codeConfirmation = crypto.randomBytes(20).toString('hex');
         //Creamos el usuario.
