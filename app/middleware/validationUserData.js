@@ -10,6 +10,7 @@ const passwordRules = {
 /*Validaciones de la informacion que se envia para la creacion y actualizacion de un usuario nuevo.*/
 const validationRulesDataUser = () => {
     return [
+        check('idUser', 'El id del usuario es requerido!').trim().not().isEmpty(),
         check('name', 'El campo nombre es requerido!').trim().not().isEmpty(),
         check('lastname', 'El campo apellido es requerido!').trim().not().isEmpty(),
         check('imgURL', 'La imagen del usuario es requerida!').trim().not().isEmpty(),
@@ -27,6 +28,13 @@ const validationRulesDataUser = () => {
         check('socialSingIn', 'El campo social Sing In es requerido!').trim().not().isEmpty(),
         check('state', 'El estado es requerido!').trim().not().isEmpty(),
         check('password', 'Por favor ingrese una contraseña de al menos 8 caracteres y contenga al menos una mayúscula, al menos una minúscula, al menos un carácter especial.').isLength({ min: passwordRules.min }).matches(passwordRules.regExpChain,)
+    ]
+}
+
+const validationRulesDataUserAvatar = () => {
+    return [
+        check('idUser', 'El id del usuario es requerido!').trim().not().isEmpty(),
+        check('imgURL', 'La imagen del usuario es requerida!').trim().not().isEmpty(),
     ]
 }
 
@@ -163,5 +171,6 @@ module.exports = {
     validationJwtIsActive,
     validationRulesDataUser,
     validationRulesLoginGoogle,
-    validationRulesRegisterUser
+    validationRulesRegisterUser,
+    validationRulesDataUserAvatar
 }

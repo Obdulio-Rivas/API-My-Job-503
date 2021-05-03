@@ -2,7 +2,7 @@ const {Router} = require('express');
 //Controller's
 const userController = require('../../controllers/user.controller');
 //Middleware's...
-const { validationRulesDataUser, validateCreateUser, validateUpdateUser} = require('../../middleware/validationUserData');
+const { validationRulesDataUser, validateCreateUser, validateUpdateUser,validationRulesDataUserAvatar} = require('../../middleware/validationUserData');
 
 //Instanacia del Router.
 const router = Router();
@@ -19,6 +19,9 @@ router.post('/create', validationRulesDataUser(), validateCreateUser, userContro
 
 //Actualiza la informacion de un usuario.
 router.put('/:idUser', validationRulesDataUser(), validateUpdateUser, userController.updateUser);
+
+//Actualiza el avatar de un usuario.
+router.put('/updateUserAvatar/:idUser/:imgURL', validationRulesDataUserAvatar(), validateUpdateUser, userController.updateUserAvatar);
 
 //Elimina un usuario con un idUsuario especifico...
 router.delete('/:idUser', userController.deleteUser);
