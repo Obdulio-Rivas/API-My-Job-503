@@ -153,13 +153,14 @@ async function updateUserAvatar(req, res) {
       }
     );
     //Validamos si se actualizo.
-    let rowsAfected = Object.keys(user).length;
+    const userUpdate = await User.findOne({ where: { idUser: idUser } });
+    let rowsAfected = Object.keys(userUpdate).length;
     if (rowsAfected > 0) {
       res.status(200).json({
         ok: true,
         rowsAfected: rowsAfected,
         msg: "Imagen del usuario actualizada con exito!",
-        data: user,
+        data: userUpdate,
         jwt: req.jwt,
       });
     } else {
@@ -167,7 +168,7 @@ async function updateUserAvatar(req, res) {
         ok: false,
         rowsAfected: rowsAfected,
         msg: "No se pudo actualizar la imagen del usuario!",
-        data: user,
+        data: userUpdate,
         jwt: req.jwt,
       });
     }
