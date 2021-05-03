@@ -13,7 +13,6 @@ const validationRulesDataUser = () => {
         check('name', 'El campo nombre es requerido!').trim().not().isEmpty(),
         check('lastname', 'El campo apellido es requerido!').trim().not().isEmpty(),
         check('imgURL', 'La imagen del usuario es requerida!').trim().not().isEmpty(),
-        check('age', 'La edad del usuario es requerida!').trim().not().isEmpty(),
         check('civilStatus', 'El estado civil del usuario es requerida!').trim().not().isEmpty(),
         check('numberDUI', 'El número de DUI del usuario es requerida!').trim().not().isEmpty(),
         check('numberNIT', 'El número de NIT del usuario es requerida!').trim().not().isEmpty(),
@@ -36,9 +35,18 @@ const validationRulesRegisterUser = () => {
     return [
         check('name', 'El campo nombre es requerido!').trim().not().isEmpty(),
         check('lastname', 'El campo apellido es requerido!').trim().not().isEmpty(),
+        check('imgURL', 'La imagen del usuario es requerida!').trim().not().isEmpty(),
+        check('civilStatus', 'El estado civil del usuario es requerida!').trim().not().isEmpty(),
+        check('numberDUI', 'El número de DUI del usuario es requerida!').trim().not().isEmpty(),
+        check('numberNIT', 'El número de NIT del usuario es requerida!').trim().not().isEmpty(),
+        check('address', 'El campo direccion es requerido!').trim().not().isEmpty(),
+        check('telephoneNumber', 'El campo telefono es requerido!').trim().not().isEmpty(),
+        check('birthDate', 'La fecha de nacimiento del usuario es requerida!').trim().not().isEmpty(),        
+        check('nationality', 'La nacionalidad del usuario es requerida!').trim().not().isEmpty(),
         check('email', 'El campo correo es requerido!').trim().isEmail(),
         check('password', 'El campo contraseña es requerido!').trim().not().isEmpty(),
         check('idRole', 'El campo tipo es requerido!').trim().not().isEmpty(),
+        check('socialSingIn', 'El campo social Sing In es requerido!').trim().not().isEmpty(),
         check('state', 'El estado es requerido!').trim().not().isEmpty(),
         check('password', 'Por favor ingrese una contraseña de al menos 8 caracteres y contenga al menos una mayúscula, al menos una minúscula, al menos un carácter especial.').isLength({ min: passwordRules.min }).matches(passwordRules.regExpChain,)
     ]
