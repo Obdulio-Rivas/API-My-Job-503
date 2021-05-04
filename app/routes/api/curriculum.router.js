@@ -13,16 +13,20 @@ const {
 const router = Router();
 
 //Ruta de las Compañias.
-//Devuelve todas las compañias...
+//Devuelve todas las curriculums...
 router.get('/', curriculumController.getAllCurriculums);
 
-//Devuelve solo la compañia con el idCompañia Especificado...
+//Devuelve solo el curiculum con el idCurriculum Especificado...
 router.get('/:idCurriculum', curriculumController.getCurriculum);
 
-//Registra una nueva compañia.
+router.get('/byIdUser/:idUser', curriculumController.getCurriculumByIdUser);
+
+router.get('/getAll/byIdUser/:idUser', curriculumController.getCurriculumByIdUser);
+
+//Registra un nuevo curriculum.
 router.post('/create', validationRulesRegisterCurriculum(), validateCreateCurriculum, curriculumController.createCurriculum);
 
-//Actualiza la informacion de la compañia.
+//Actualiza la informacion del curiculum.
 router.put('/:idCurriculum', validationRulesDataCurriculum(), validateUpdateCurriculum, curriculumController.updateCurriculum);
 
 //Elimina una compañia con un idCompañia especifico...

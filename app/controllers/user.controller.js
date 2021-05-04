@@ -4,13 +4,6 @@ const cloudinary = require("cloudinary");
 //Instancia del Model User para la BD.
 const { User } = require("../db/database.db");
 
-//Configuraciones de cloudinary.
-cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_API_SECRET,
-})
-
 //User controller.
 //Obtener todos los usuarios.
 async function getAllUsers(req, res) {
