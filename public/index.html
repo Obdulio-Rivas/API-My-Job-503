@@ -4,47 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-signin-client_id" content="950638853706-gmp40iqcbmd7kh9jmuev2gd0ji5umsgk.apps.googleusercontent.com">
-    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/menu.js"></script>
+    <title>My Job 503</title>
 </head>
 <body>
-    API home page
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
-    <a href="#" onclick="signOut();">Sign out</a>
-
-    <img src="https://cdn.dribbble.com/users/78613/screenshots/2485224/zero.gif" alt="">
-
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-
-    <script>
-
-        console.log(window.location.hostname.includes('localhost'))
-
-        var url = (window.location.hostname.includes('localhost'))
-            ? 'http://localhost:3000/api/auth/google' : 'https://apimyjob503.herokuapp.com/api/auth/google'
-
-        function onSignIn(googleUser) {
-
-            const id_token = googleUser.getAuthResponse().id_token;
-
-            const data = { id_token }
-
-            fetch(url, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify( data )
-            })
-            .then( resp => resp.json())
-            .then( data => console.log('Nuestro server', data))
-            .catch( console.log )
-        }
-
-        function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-            console.log('User signed out.');
-            });
-        }
-    </script>
-</body>
+    <header>
+        <div class="container">
+        
+          <h1 class="logo">Generico<span>Logo</span></h1>
+          
+          <nav class="site-nav">
+              <ul>
+                <li><a href=""><i class="fa fa-home site-nav--icon"></i>Home</a></li> 
+                <li><a href=""><i class="fa fa-info site-nav--icon"></i>About</a></li>
+                <li><a href=""><i class="fa fa-pencil site-nav--icon"></i>Blog</a></li>
+                <li><a href=""><i class="fa fa-usd site-nav--icon"></i>Pricing</a></li>
+                <li><a href=""><i class="fa fa-envelope site-nav--icon"></i>Contact</a></li>
+              </ul> 
+          </nav>
+          
+          <div class="menu-toggle">
+            <div class="hamburger"></div>
+          </div>
+          
+        </div>
+        
+        </header>
+        
+        
+        
+        
+  </body>
 </html>

@@ -10,6 +10,6 @@ module.exports = (sequelize, type) => {
         //Llave foranea.
         idVacant: type.INTEGER,
         idCurriculum: type.INTEGER,
-        state: type.ENUM('Active', 'Inactive')
+        state: type.ENUM('Inactive', 'Active', 'Rechazado')
     });
 }

@@ -24,9 +24,11 @@ module.exports = (sequelize, type) => {
         masterDegree:  type.STRING,
         specialty:  type.STRING,
         complementaryStudies: type.STRING,
+        //Idiomas
         nativeLanguage: type.INTEGER,
         otherLanguage: type.INTEGER,
         otherLanguageLevel: type.INTEGER,
+        //Referencias.
         referenceNameOne: type.STRING,
         referenceTelOne: type.STRING,
         referenceNameTwo: type.STRING,
