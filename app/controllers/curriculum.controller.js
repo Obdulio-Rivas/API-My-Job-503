@@ -30,7 +30,7 @@ async function getCurriculum(req, res) {
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: `Curriculum con id ${idCurriculum} encontrado con exito!`,
-                data: curriculum,
+                data: [curriculum],
                 jwt: req.jwt
             });
         }else{
@@ -59,14 +59,14 @@ async function getCurriculumByIdUser(req, res) {
     var curriculum = null;
     const idUser = req.params.idUser;
     if(idUser){
-        curriculum = await Curriculum.findAll({ where: { idUser: idUser } });
+        curriculum = await Curriculum.findOne({ where: { idUser: idUser } });
         rowsAfected = Object.keys(curriculum).length;
         if(rowsAfected>0){
             res.status(200).json({
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: `Curriculums con el id del usuario #${idUser} encontrado con exito!`,
-                data: curriculum,
+                data: [curriculum],
                 jwt: req.jwt
             });
         }else{
@@ -105,7 +105,7 @@ async function createCurriculum(req, res) {
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: "Curriculum registrado con exito!",
-                data: newCurriculum,
+                data: [newCurriculum],
                 jwt: req.jwt
             });
         }else{
