@@ -22,7 +22,6 @@ module.exports = (sequelize, type) => {
         cycleUniversity: type.INTEGER,
         postGrado: type.STRING,
         masterDegree:  type.STRING,
-        specialty:  type.STRING,
         complementaryStudies: type.STRING,
         //Idiomas
         nativeLanguage: type.INTEGER,
