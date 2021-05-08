@@ -60,7 +60,7 @@ async function getCurriculumByIdUser(req, res) {
     const idUser = req.params.idUser;
     if(idUser){
         curriculum = await Curriculum.findOne({ where: { idUser: idUser } });
-        if(curriculum){
+        if(curriculum.){
             rowsAfected = 1;
             res.status(200).json({
                 isSuccessful: true,
@@ -96,8 +96,8 @@ async function getCurriculumByIdUser(req, res) {
     const idUser = req.params.idUser;
     if(idUser){
         curriculum = await Curriculum.findAll({ where: { idUser: idUser } });
-        if(curriculum){
-            rowsAfected = 1;
+        rowsAfected = Object.keys(newCurriculum).length;
+        if(rowsAfected>0){
             res.status(200).json({
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
