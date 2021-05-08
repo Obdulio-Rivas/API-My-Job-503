@@ -143,7 +143,7 @@ async function updateCurriculum(req, res) {
                 isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: "Curriculum Actualizado con exito!",
-                data: curriculum,
+                data: [curriculum],
                 jwt: req.jwt
             });    
         }else{
