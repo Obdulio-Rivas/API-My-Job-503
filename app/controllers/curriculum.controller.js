@@ -53,42 +53,6 @@ async function getCurriculum(req, res) {
     }
 }
 
-//Obtener un curriculum por idUser.
-async function getCurriculumByIdUser(req, res) {
-    let rowsAfected = 0;
-    var curriculum = null;
-    const idUser = req.params.idUser;
-    if(idUser){
-        curriculum = await Curriculum.findOne({ where: { idUser: idUser } });
-        if(curriculum.){
-            rowsAfected = 1;
-            res.status(200).json({
-                isSuccessful: true,
-                rowsAfected: rowsAfected,
-                msg: `Curriculum con el id del usuario #${idUser} encontrado con exito!`,
-                data: curriculum,
-                jwt: req.jwt
-            });
-        }else{
-            res.status(200).json({
-                isSuccessful: false,
-                rowsAfected: rowsAfected,
-                msg: `No se ha encontrado un curriculum con el id del usuario #${idUser}`,
-                data: curriculum,
-                jwt: req.jwt
-            });
-        }
-    }else{
-        res.status(200).json({
-            isSuccessful: false,
-            rowsAfected: rowsAfected,
-            msg: `No se ha recibido el parametro idUser!`,
-            data: curriculum,
-            jwt: req.jwt
-        });
-    }
-}
-
 //Obtener todos los curriculum vinculados a el idUser.
 async function getCurriculumByIdUser(req, res) {
     let rowsAfected = 0;
