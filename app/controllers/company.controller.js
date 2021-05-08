@@ -139,7 +139,7 @@ async function updateCompany(req, res) {
         let rowsAfected = Object.keys(company).length;
         if(company[0]>0){
             res.status(200).json({
-                ok: true,
+                isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: "Compañia Actualizado con exito!",
                 data: company,
@@ -147,7 +147,7 @@ async function updateCompany(req, res) {
             });    
         }else{
             res.status(200).json({
-                ok: false,
+                isSuccessful: false,
                 rowsAfected: rowsAfected,
                 msg: "No se pudo Actualizar la compañia!",
                 data: null,
@@ -156,7 +156,7 @@ async function updateCompany(req, res) {
         }
     }else{
         res.status(200).json({
-            ok: false,
+            isSuccessful: false,
             rowsAfected: 0,
             msg: "No se pudo Actualizar la compañia!",
             data: null,
@@ -175,7 +175,7 @@ async function deleteCompany(req, res){
         let rowsAfected = company;
         if(rowsAfected>0){
             res.status(200).json({
-                ok: true,
+                isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: "Compañia Eliminada con exito!",
                 data: company,
@@ -183,7 +183,7 @@ async function deleteCompany(req, res){
             });    
         }else{
             res.status(200).json({
-                ok: false,
+                isSuccessful: false,
                 rowsAfected: rowsAfected,
                 msg: "No se pudo Eliminar la compañia!",
                 data: company,
@@ -192,7 +192,7 @@ async function deleteCompany(req, res){
         }
     }else{
         res.status(200).json({
-            ok: false,
+            isSuccessful: false,
             rowsAfected: 0,
             msg: "No se pudo Eliminar la compañia!",
             data: company,

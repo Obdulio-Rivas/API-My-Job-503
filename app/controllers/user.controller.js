@@ -108,7 +108,7 @@ async function updateUser(req, res) {
     let rowsAfected = Object.keys(user).length;
     if (rowsAfected > 0) {
       res.status(200).json({
-        ok: true,
+        isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: "Usuario Actualizado con exito!",
         data: user,
@@ -116,7 +116,7 @@ async function updateUser(req, res) {
       });
     } else {
       res.status(200).json({
-        ok: false,
+        isSuccessful: false,
         rowsAfected: rowsAfected,
         msg: "No se pudo Actualizar el usuario!",
         data: user,
@@ -125,7 +125,7 @@ async function updateUser(req, res) {
     }
   } else {
     res.status(200).json({
-      ok: false,
+      isSuccessful: false,
       rowsAfected: 0,
       msg: "No se pudo Actualizar el usuario!",
       data: null,
@@ -150,7 +150,7 @@ async function updateUserAvatar(req, res) {
     let rowsAfected = Object.keys(userUpdate).length;
     if (rowsAfected > 0) {
       res.status(200).json({
-        ok: true,
+        isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: "Imagen del usuario actualizada con exito!",
         data: userUpdate,
@@ -158,7 +158,7 @@ async function updateUserAvatar(req, res) {
       });
     } else {
       res.status(200).json({
-        ok: false,
+        isSuccessful: false,
         rowsAfected: rowsAfected,
         msg: "No se pudo actualizar la imagen del usuario!",
         data: userUpdate,
@@ -167,7 +167,7 @@ async function updateUserAvatar(req, res) {
     }
   } else {
     res.status(200).json({
-      ok: false,
+      isSuccessful: false,
       rowsAfected: 0,
       msg: "No se pudo actualizar la imagen del usuario!",
       data: null,
@@ -186,7 +186,7 @@ async function deleteUser(req, res) {
     let rowsAfected = user;
     if (rowsAfected > 0) {
       res.status(200).json({
-        ok: true,
+        isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: "Usuario Eliminado con exito!",
         data: user,
@@ -194,7 +194,7 @@ async function deleteUser(req, res) {
       });
     } else {
       res.status(200).json({
-        ok: false,
+        isSuccessful: false,
         rowsAfected: rowsAfected,
         msg: "No se pudo Eliminar el usuario!",
         data: user,
@@ -203,7 +203,7 @@ async function deleteUser(req, res) {
     }
   } else {
     res.status(200).json({
-      ok: false,
+      isSuccessful: false,
       rowsAfected: 0,
       msg: "No se pudo Eliminar el usuario!",
       data: null,

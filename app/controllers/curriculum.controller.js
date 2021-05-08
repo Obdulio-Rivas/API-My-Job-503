@@ -176,7 +176,7 @@ async function updateCurriculum(req, res) {
         if(curriculum[0]>0){
             curriculum = await Curriculum.findOne({ where: { idCurriculum: idCurriculum } });
             res.status(200).json({
-                ok: true,
+                isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: "Curriculum Actualizado con exito!",
                 data: curriculum,
@@ -184,7 +184,7 @@ async function updateCurriculum(req, res) {
             });    
         }else{
             res.status(200).json({
-                ok: false,
+                isSuccessful: false,
                 rowsAfected: rowsAfected,
                 msg: "No se pudo Actualizar el curriculum!",
                 data: null,
@@ -193,7 +193,7 @@ async function updateCurriculum(req, res) {
         }
     }else{
         res.status(200).json({
-            ok: false,
+            isSuccessful: false,
             rowsAfected: 0,
             msg: "No se pudo Actualizar el curriculum!",
             data: null,
@@ -212,7 +212,7 @@ async function deleteCurriculum(req, res){
         let rowsAfected = curriculum;
         if(rowsAfected>0){
             res.status(200).json({
-                ok: true,
+                isSuccessful: true,
                 rowsAfected: rowsAfected,
                 msg: "Curriculum Eliminado con exito!",
                 data: curriculum,
@@ -220,7 +220,7 @@ async function deleteCurriculum(req, res){
             });    
         }else{
             res.status(200).json({
-                ok: false,
+                isSuccessful: false,
                 rowsAfected: rowsAfected,
                 msg: "No se pudo Eliminar el curriculum!",
                 data: curriculum,
@@ -229,7 +229,7 @@ async function deleteCurriculum(req, res){
         }
     }else{
         res.status(200).json({
-            ok: false,
+            isSuccessful: false,
             rowsAfected: 0,
             msg: "No se pudo Eliminar el curriculum!",
             data: null,

@@ -179,7 +179,7 @@ async function updateVacant(req, res) {
     let rowsAfected = Object.keys(vacant).length;
     if (vacant[0] > 0) {
       res.status(200).json({
-        ok: true,
+        isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: "Vacante Actualizado con exito!",
         data: vacant,
@@ -187,7 +187,7 @@ async function updateVacant(req, res) {
       });
     } else {
       res.status(200).json({
-        ok: false,
+        isSuccessful: false,
         rowsAfected: rowsAfected,
         msg: "No se pudo Actualizar la vacante!",
         data: null,
@@ -196,7 +196,7 @@ async function updateVacant(req, res) {
     }
   } else {
     res.status(200).json({
-      ok: false,
+      isSuccessful: false,
       rowsAfected: 0,
       msg: "No se pudo Actualizar la vacante!",
       data: null,
@@ -215,7 +215,7 @@ async function deleteVacant(req, res) {
     let rowsAfected = vacant;
     if (rowsAfected > 0) {
       res.status(200).json({
-        ok: true,
+        isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: "Vacante Eliminada con exito!",
         data: vacant,
@@ -223,7 +223,7 @@ async function deleteVacant(req, res) {
       });
     } else {
       res.status(200).json({
-        ok: false,
+        isSuccessful: false,
         rowsAfected: rowsAfected,
         msg: "No se pudo Eliminar la vacante!",
         data: vacant,
@@ -232,7 +232,7 @@ async function deleteVacant(req, res) {
     }
   } else {
     res.status(200).json({
-      ok: false,
+      isSuccessful: false,
       rowsAfected: 0,
       msg: "No se pudo Eliminar la vacante!",
       data: null,
