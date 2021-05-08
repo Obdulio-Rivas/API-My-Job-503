@@ -40,7 +40,7 @@ router.put('/studies/:idCurriculum', validationRulesDataStudiesCurriculum(), val
 router.put('/references/:idCurriculum', validationRulesDataReferencesCurriculum(), validateUpdateCurriculum, curriculumController.updateCurriculum);
 
 //Actualiza la informacion de lod idiomas del curiculum.
-router.put('/languages/:idCurriculum', validationRulesDataLanguagesCurriculum, validateUpdateCurriculum, curriculumController.updateCurriculum);
+router.put('/languages/:idCurriculum', validationRulesDataLanguagesCurriculum(), validateUpdateCurriculum, curriculumController.updateCurriculum);
 
 //Actualiza la informacion de experiencia laboral del curiculum.
 router.put('/workExperience/:idCurriculum', validationRulesDataWorkExperienceCurriculum(), validateUpdateCurriculum, curriculumController.updateCurriculum);
