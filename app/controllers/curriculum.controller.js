@@ -168,12 +168,13 @@ async function createCurriculum(req, res) {
 async function updateCurriculum(req, res) {
     let idCurriculum = req.params.idCurriculum;
     if(idCurriculum){
-        const curriculum = await Curriculum.update(req.body, {
+        let curriculum = await Curriculum.update(req.body, {
             where: { idCurriculum: idCurriculum}
         });
         //Validamos si se actualizo.
         let rowsAfected = Object.keys(curriculum).length;
         if(curriculum[0]>0){
+            curriculum = await Curriculum.findOne({ where: { idCurriculum: idCurriculum } });
             res.status(200).json({
                 ok: true,
                 rowsAfected: rowsAfected,
