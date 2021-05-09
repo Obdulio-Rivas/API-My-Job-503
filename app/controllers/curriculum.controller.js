@@ -60,15 +60,25 @@ async function getCurriculumByIdUser(req, res) {
     const idUser = req.params.idUser;
     if(idUser){
         curriculum = await Curriculum.findOne({ where: { idUser: idUser } });
-        rowsAfected = Object.keys(curriculum).length;
-        if(rowsAfected>0){
-            res.status(200).json({
-                isSuccessful: true,
-                rowsAfected: rowsAfected,
-                msg: `Curriculums con el id del usuario #${idUser} encontrado con exito!`,
-                data: [curriculum],
-                jwt: req.jwt
-            });
+        if(curriculum){
+            rowsAfected = Object.keys(curriculum).length;
+            if(rowsAfected>0){
+                res.status(200).json({
+                    isSuccessful: true,
+                    rowsAfected: rowsAfected,
+                    msg: `Curriculums con el id del usuario #${idUser} encontrado con exito!`,
+                    data: [curriculum],
+                    jwt: req.jwt
+                });
+            }else{
+                res.status(200).json({
+                    isSuccessful: false,
+                    rowsAfected: rowsAfected,
+                    msg: `No se han encontrado curriculums con el id del usuario #${idUser}`,
+                    data: [],
+                    jwt: req.jwt
+                });
+            }
         }else{
             res.status(200).json({
                 isSuccessful: false,
