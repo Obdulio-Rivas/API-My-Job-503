@@ -38,7 +38,7 @@ async function getCurriculum(req, res) {
                 isSuccessful: false,
                 rowsAfected: rowsAfected,
                 msg: `No se ha encontrado un curriculum con id ${idCurriculum}`,
-                data: curriculum,
+                data: [],
                 jwt: req.jwt
             });
         }
@@ -47,7 +47,7 @@ async function getCurriculum(req, res) {
             isSuccessful: false,
             rowsAfected: rowsAfected,
             msg: `No se ha recibido el parametro idCurriculum!`,
-            data: curriculum,
+            data: [],
             jwt: req.jwt
         });
     }
@@ -74,7 +74,7 @@ async function getCurriculumByIdUser(req, res) {
                 isSuccessful: false,
                 rowsAfected: rowsAfected,
                 msg: `No se han encontrado curriculums con el id del usuario #${idUser}`,
-                data: curriculum,
+                data: [],
                 jwt: req.jwt
             });
         }
@@ -83,7 +83,7 @@ async function getCurriculumByIdUser(req, res) {
             isSuccessful: false,
             rowsAfected: rowsAfected,
             msg: `No se ha recibido el parametro idUser!`,
-            data: curriculum,
+            data: [],
             jwt: req.jwt
         });
     }
@@ -113,7 +113,7 @@ async function createCurriculum(req, res) {
                 isSuccessful: false,
                 rowsAfectadas: 0,
                 msg: "No se pudo registrar el curriculum!",
-                data: null,
+                data: [],
                 jwt: req.jwt
             });
         }
@@ -122,7 +122,7 @@ async function createCurriculum(req, res) {
             isSuccessful: false,
             rowsAfectadas: 0,
             msg: `Error ya existe un curriculum, registrado para el usuario ${idUser}`,
-            data: null,
+            data: [],
             jwt: req.jwt
         });
     }
@@ -151,7 +151,7 @@ async function updateCurriculum(req, res) {
                 isSuccessful: false,
                 rowsAfected: rowsAfected,
                 msg: "No se pudo Actualizar el curriculum!",
-                data: null,
+                data: [],
                 jwt: req.jwt
             });
         }
@@ -160,7 +160,7 @@ async function updateCurriculum(req, res) {
             isSuccessful: false,
             rowsAfected: 0,
             msg: "No se pudo Actualizar el curriculum!",
-            data: null,
+            data: [],
             jwt: req.jwt
         });
     }
@@ -187,7 +187,7 @@ async function deleteCurriculum(req, res){
                 isSuccessful: false,
                 rowsAfected: rowsAfected,
                 msg: "No se pudo Eliminar el curriculum!",
-                data: curriculum,
+                data: [],
                 jwt: req.jwt
             });
         }
@@ -196,7 +196,7 @@ async function deleteCurriculum(req, res){
             isSuccessful: false,
             rowsAfected: 0,
             msg: "No se pudo Eliminar el curriculum!",
-            data: null,
+            data: [],
             jwt: req.jwt
         });
     }
