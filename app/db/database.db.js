@@ -20,6 +20,7 @@ const RoleModel = require('../models/role.model');
 const VacantModel = require('../models/vacant.model');
 const CompanyModel = require('../models/company.model');
 const CurriculumModel = require('../models/curriculum.modelo');
+const ApplicationModel = require('../models/application.model');
 
 //Instancia de las Tablas....
 //Persona.
@@ -28,6 +29,7 @@ const Role = RoleModel(sequelize, Sequelize);
 const Vacant = VacantModel(sequelize, Sequelize);
 const Company = CompanyModel(sequelize, Sequelize);
 const Curriculum = CurriculumModel(sequelize, Sequelize);
+const Application = ApplicationModel(sequelize, Sequelize);
 //Agregar la tabla de conexion de solicitudes.
 
 //Relaciones.
@@ -63,7 +65,6 @@ const initData = () => {
                 name: initCatalogData.initUserData[i].name,
                 lastname: initCatalogData.initUserData[i].lastname,
                 imgURL: initCatalogData.initUserData[i].imgURL,
-                age: initCatalogData.initUserData[i].age,
                 civilStatus: initCatalogData.initUserData[i].civilStatus,
                 numberDUI: initCatalogData.initUserData[i].numberDUI,
                 numberNIT: initCatalogData.initUserData[i].numberNIT,
@@ -96,5 +97,6 @@ module.exports = {
     Role,
     Vacant,
     Company,
-    Curriculum
+    Curriculum,
+    Application
 }
