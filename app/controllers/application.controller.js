@@ -66,7 +66,7 @@ async function getAplicationsByIdUser(req, res) {
         isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: `Aplicaciones del usuaio con id ${idUser} encontradas con exito!`,
-        data: [applications],
+        data: applications,
         jwt: req.jwt,
       });
     } else {
@@ -74,7 +74,7 @@ async function getAplicationsByIdUser(req, res) {
         isSuccessful: false,
         rowsAfected: rowsAfected,
         msg: `No se ha encontrado aplicaciones con el id de usuario ${idUser}`,
-        data: [applications],
+        data: applications,
         jwt: req.jwt,
       });
     }
@@ -83,7 +83,7 @@ async function getAplicationsByIdUser(req, res) {
       isSuccessful: false,
       rowsAfected: rowsAfected,
       msg: `No se ha recibido el parametro idUser o idVacant!`,
-      data: [applications],
+      data: applications,
       jwt: req.jwt,
     });
   }
@@ -102,7 +102,7 @@ async function getAplicationsByIdUserAndIdVacant(req, res) {
         isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: `Aplicaciones del usuaio con id ${idUser} y vacante con id ${idVacant} encontradas con exito!`,
-        data: [applications],
+        data: applications,
         jwt: req.jwt,
       });
     } else {
@@ -110,7 +110,7 @@ async function getAplicationsByIdUserAndIdVacant(req, res) {
         isSuccessful: false,
         rowsAfected: rowsAfected,
         msg: `No se ha encontrado aplicaciones con el id de usuario ${idUser} y vacante con id ${idVacant}`,
-        data: [applications],
+        data: applications,
         jwt: req.jwt,
       });
     }
@@ -119,7 +119,7 @@ async function getAplicationsByIdUserAndIdVacant(req, res) {
       isSuccessful: false,
       rowsAfected: rowsAfected,
       msg: `No se ha recibido el parametro idUser o idVacant!`,
-      data: [applications],
+      data: applications,
       jwt: req.jwt,
     });
   }
