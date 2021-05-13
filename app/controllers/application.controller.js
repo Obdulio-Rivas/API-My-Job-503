@@ -95,7 +95,7 @@ async function getAplicationsByIdUserAndIdVacant(req, res) {
   var applications = null;
   const {idUser, idVacant} = req.query;
   if (idUser) {
-    applications = await Application.findAll({ where: { idUser: idUser, idVacant: idVacant } });
+    applications = await Application.findOne({ where: { idUser: idUser, idVacant: idVacant } });
     if (applications) {
       rowsAfected = Object.keys(applications).length;
       if(rowsAfected>0){
