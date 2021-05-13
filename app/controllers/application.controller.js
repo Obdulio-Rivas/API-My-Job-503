@@ -222,7 +222,7 @@ async function deleteApplication(req, res) {
         isSuccessful: true,
         rowsAfected: rowsAfected,
         msg: "Aplicacion Eliminada con exito!",
-        data: application,
+        data: [],
         jwt: req.jwt,
       });
     } else {
@@ -230,7 +230,7 @@ async function deleteApplication(req, res) {
         isSuccessful: false,
         rowsAfected: rowsAfected,
         msg: "No se pudo Eliminar la aplicacion!",
-        data: application,
+        data: [],
         jwt: req.jwt,
       });
     }
