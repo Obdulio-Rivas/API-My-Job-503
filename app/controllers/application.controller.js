@@ -97,22 +97,24 @@ async function getAplicationsByIdUserAndIdVacant(req, res) {
   if (idUser) {
     applications = await Application.findAll({ where: { idUser: idUser, idVacant: idVacant } });
     if (applications) {
-      rowsAfected = 1;
-      res.status(200).json({
-        isSuccessful: true,
-        rowsAfected: rowsAfected,
-        msg: `Aplicaciones del usuaio con id ${idUser} y vacante con id ${idVacant} encontradas con exito!`,
-        data: applications,
-        jwt: req.jwt,
-      });
-    } else {
-      res.status(200).json({
-        isSuccessful: false,
-        rowsAfected: rowsAfected,
-        msg: `No se ha encontrado aplicaciones con el id de usuario ${idUser} y vacante con id ${idVacant}`,
-        data: applications,
-        jwt: req.jwt,
-      });
+      rowsAfected = Object.keys(curriculum).length;
+      if(rowsAfected>0){
+          res.status(200).json({
+            isSuccessful: true,
+            rowsAfected: rowsAfected,
+            msg: `Aplicaciones del usuaio con id ${idUser} y vacante con id ${idVacant} encontradas con exito!`,
+            data: applications,
+            jwt: req.jwt,
+          });
+      }else{
+          res.status(200).json({
+            isSuccessful: false,
+            rowsAfected: rowsAfected,
+            msg: `No se ha encontrado aplicaciones con el id de usuario ${idUser} y vacante con id ${idVacant}`,
+            data: applications,
+            jwt: req.jwt,
+          });
+      }
     }
   } else {
     res.status(200).json({
