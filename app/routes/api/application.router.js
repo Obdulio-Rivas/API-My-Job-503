@@ -22,6 +22,9 @@ router.get('/byIdApplication/:idApplication', applicationController.getApplicati
 //Devuelve solo la compañia con el idCompañia Especificado...
 router.get('/byIdUser/:idUser', applicationController.getAplicationsByIdUser);
 
+//Devuelve solo la compañia con el idCompañia Especificado...
+router.get('/byIdUserAndIdVacant/', applicationController.getAplicationsByIdUserAndIdVacant);
+
 //Registra una nueva compañia.
 router.post('/create', validationRulesRegisterApplication(), validateCreateApplication, applicationController.createApplication);
 
