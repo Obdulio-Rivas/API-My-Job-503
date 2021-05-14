@@ -1,5 +1,5 @@
 //Instancia del Model Company para la BD.
-const { Application } = require("../db/database.db");
+const { Application, User, Vacant } = require("../db/database.db");
 
 //Application controller.
 //Obtener todos las aplicaciones.
@@ -59,7 +59,15 @@ async function getAplicationsByIdUser(req, res) {
   var applications = null;
   const idUser = req.params.idUser;
   if (idUser) {
-    applications = await Application.findAll({ where: { idUser: idUser } });
+    applications = await User.findAll({
+      include: [
+        { 
+          model: Application,
+          include: { model: Vacant }
+        }
+      ],
+      where: { idUser: idUser },
+    });
     if (applications) {
       rowsAfected = 1;
       res.status(200).json({
@@ -93,27 +101,29 @@ async function getAplicationsByIdUser(req, res) {
 async function getAplicationsByIdUserAndIdVacant(req, res) {
   let rowsAfected = 0;
   var applications = null;
-  const {idUser, idVacant} = req.query;
+  const { idUser, idVacant } = req.query;
   if (idUser) {
-    applications = await Application.findOne({ where: { idUser: idUser, idVacant: idVacant } });
+    applications = await Application.findOne({
+      where: { idUser: idUser, idVacant: idVacant },
+    });
     if (applications) {
       rowsAfected = Object.keys(applications).length;
-      if(rowsAfected>0){
-          res.status(200).json({
-            isSuccessful: true,
-            rowsAfected: rowsAfected,
-            msg: `Aplicaciones del usuaio con id ${idUser} y vacante con id ${idVacant} encontradas con exito!`,
-            data: [applications],
-            jwt: req.jwt,
-          });
-      }else{
-          res.status(200).json({
-            isSuccessful: false,
-            rowsAfected: rowsAfected,
-            msg: `No se ha encontrado aplicaciones con el id de usuario ${idUser} y vacante con id ${idVacant}`,
-            data: [applications],
-            jwt: req.jwt,
-          });
+      if (rowsAfected > 0) {
+        res.status(200).json({
+          isSuccessful: true,
+          rowsAfected: rowsAfected,
+          msg: `Aplicaciones del usuaio con id ${idUser} y vacante con id ${idVacant} encontradas con exito!`,
+          data: [applications],
+          jwt: req.jwt,
+        });
+      } else {
+        res.status(200).json({
+          isSuccessful: false,
+          rowsAfected: rowsAfected,
+          msg: `No se ha encontrado aplicaciones con el id de usuario ${idUser} y vacante con id ${idVacant}`,
+          data: [applications],
+          jwt: req.jwt,
+        });
       }
     }
   } else {
@@ -133,13 +143,13 @@ async function createApplication(req, res) {
   const idUser = req.body.idUser;
   const idVacant = req.body.idVacant;
   const application = await Application.findOne({
-    where: { 
-        idVacant: idVacant,
-        idUser: idUser
+    where: {
+      idVacant: idVacant,
+      idUser: idUser,
     },
   });
   //Validamos si se encontraron coincidencias.
-  if (!application){
+  if (!application) {
     //Creamos la compañia.
     const newApplication = await Application.create(req.body);
     //Validamos si se creo.

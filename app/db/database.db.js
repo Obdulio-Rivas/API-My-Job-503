@@ -41,6 +41,10 @@ User.hasOne(Company, {foreignKey: 'idUser'})
 User.belongsTo(Role, {foreignKey: 'idRole'})
 //Llaves foraneas de la tabla Vacantes
 Vacant.belongsTo(Company, {foreignKey: 'idCompany'})
+//Llaves foraneas de la tabla User
+User.hasMany(Application, {foreignKey: 'idUser'})
+//Llaves foraneas de la tabla User
+Application.belongsTo(Vacant, {foreignKey: 'idVacant'})
 
 //Carga de datos tablas catalogo y datos de prueba.
 const initData = () => {
