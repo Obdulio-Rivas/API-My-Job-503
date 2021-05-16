@@ -12,26 +12,26 @@ const {
 //Instanacia del Router.
 const router = Router();
 
-//Ruta de las Compañias.
-//Devuelve todas las compañias...
+//Ruta de las Vacantes.
+//Devuelve todas las vacantes.
 router.get('/', vacantController.getAllVacants);
 
-//Devuelve solo la compañia con el idCompañia Especificado...
-router.get('/:idVacante', vacantController.getVacant);
+//Devuelve solo la vacante con el idVacant especificado.
+router.get('/:idVacant', vacantController.getVacant);
 
-//Devuelve las vacantes con la categoria Especificada...
+//Devuelve las vacantes con la categoria especificado.
 router.get('/filterCategoryVacant/:categoryVacant', vacantController.getVacantsByCategory);
 
-//Devuelve las vacantes con la categoria Especificada...
+//Devuelve las vacantes relacionadas al idCompany especificado.
 router.get('/filterIdCompany/:idCompany', vacantController.getVacantsByIdCompany);
 
-//Registra una nueva compañia.
+//Registra una nueva vacante.
 router.post('/create', validationRulesRegisterVacant(), validateCreateVacant, vacantController.createVacant);
 
-//Actualiza la informacion de la compañia.
-router.put('/:idVacante', validationRulesDataVacant(), validateUpdateVacant, vacantController.updateVacant);
+//Actualiza la información de la vacante.
+router.put('/:idVacant', validationRulesDataVacant(), validateUpdateVacant, vacantController.updateVacant);
 
-//Elimina una compañia con un idCompañia especifico...
-router.delete('/:idVacante', vacantController.deleteVacant);
+//Elimina una vacante con el idVacant especifico.
+router.delete('/:idVacant', vacantController.deleteVacant);
 
 module.exports = router;

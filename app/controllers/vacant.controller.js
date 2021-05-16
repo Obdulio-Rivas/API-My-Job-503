@@ -1,7 +1,5 @@
-const bcryptJS = require("bcryptjs");
-const moment = require("moment");
 //Instancia del Model Company para la BD.
-const { Vacant } = require("../db/database.db");
+const { Vacant, Application } = require("../db/database.db");
 
 //Company controller.
 //Obtener todas las vacantes.
@@ -170,10 +168,10 @@ async function createVacant(req, res) {
 
 //Actualizar la vacante.
 async function updateVacant(req, res) {
-  let idVacante = req.params.idVacante;
-  if (idVacante) {
+  let idVacant = req.params.idVacant;
+  if (idVacant) {
     const vacant = await Vacant.update(req.body, {
-      where: { idVacante: idVacante },
+      where: { idVacant: idVacant },
     });
     //Validamos si se actualizo.
     let rowsAfected = Object.keys(vacant).length;
@@ -208,6 +206,11 @@ async function updateVacant(req, res) {
 async function deleteVacant(req, res) {
   let idVacant = req.params.idVacant;
   if (idVacant) {
+    //Eliminamos las aplicaciones que esten vinculadas con el idVacant.
+    const application = await Application.destroy({
+      where: { idVacant: idVacant },
+    });
+    //Eliminamos la vacante con perteneciente al idVacant.
     const vacant = await Vacant.destroy({
       where: { idVacant: idVacant },
     });
@@ -217,16 +220,16 @@ async function deleteVacant(req, res) {
       res.status(200).json({
         isSuccessful: true,
         rowsAfected: rowsAfected,
-        msg: "Vacante Eliminada con exito!",
-        data: vacant,
+        msg: "Vacante y aplicaciones relacionadas eliminadas con exito!",
+        data: [],
         jwt: req.jwt,
       });
     } else {
       res.status(200).json({
         isSuccessful: false,
         rowsAfected: rowsAfected,
-        msg: "No se pudo Eliminar la vacante!",
-        data: vacant,
+        msg: "No se pudo eliminar la vacante!",
+        data: [],
         jwt: req.jwt,
       });
     }

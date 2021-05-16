@@ -16,16 +16,16 @@ const router = Router();
 //Devuelve todas las aplicaciones...
 router.get('/', applicationController.getAllApplications);
 
-//Devuelve solo la aplicación con el idApplication Especificado...
+//Devuelve solo la aplicación con el idApplication especificado.
 router.get('/byIdApplication/:idApplication', applicationController.getApplication);
 
-//Devuelve todas las aplicaciones con el idUser Especificado...
+//Devuelve todas las aplicaciones con el idUser especificado.
 router.get('/byIdUser/:idUser', applicationController.getAplicationsByIdUser);
 
-//Devuelve todas las aplicaciones con el idVacant Especificado...
+//Devuelve todas las aplicaciones con el idVacant especificado.
 router.get('/byIdVacant/:idVacant', applicationController.getAplicationsByIdVacant);
 
-//Devuelve solo las aplicaciones con el idVacant y idUser Especificado...
+//Devuelve solo las aplicaciones con el idVacant y idUser especificado.
 router.get('/byIdUserAndIdVacant/', applicationController.getAplicationsByIdUserAndIdVacant);
 
 //Registra una nueva aplicación.
@@ -34,7 +34,7 @@ router.post('/create', validationRulesRegisterApplication(), validateCreateAppli
 //Actualiza la información de la aplicación.
 router.put('/:idApplication', validationRulesDataApplication(), validateUpdateApplication, applicationController.updateApplication);
 
-//Elimina una aplicación con un idApplication especifico...
+//Elimina una aplicación con un idApplication especifico.
 router.delete('/:idApplication', applicationController.deleteApplication);
 
 module.exports = router;
