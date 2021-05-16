@@ -90,7 +90,45 @@ async function getAplicationsByIdUser(req, res) {
     res.status(200).json({
       isSuccessful: false,
       rowsAfected: rowsAfected,
-      msg: `No se ha recibido el parametro idUser o idVacant!`,
+      msg: `No se ha recibido el parametro idUser!`,
+      data: applications,
+      jwt: req.jwt,
+    });
+  }
+}
+
+//Obtener las aplicaciones por idVacant.
+async function getAplicationsByIdVacant(req, res) {
+  let rowsAfected = 0;
+  var applications = null;
+  const idVacant = req.params.idVacant;
+  if (idVacant) {
+    applications = await Application.findAll({
+      where: { idVacant: idVacant },
+    });
+    if (applications) {
+      rowsAfected = 1;
+      res.status(200).json({
+        isSuccessful: true,
+        rowsAfected: rowsAfected,
+        msg: `Aplicaciones de la vacante con el id #${idVacant} encontradas con exito!`,
+        data: applications,
+        jwt: req.jwt,
+      });
+    } else {
+      res.status(200).json({
+        isSuccessful: false,
+        rowsAfected: rowsAfected,
+        msg: `No se ha encontrado aplicaciones con la vacante de id #${idVacant}`,
+        data: applications,
+        jwt: req.jwt,
+      });
+    }
+  } else {
+    res.status(200).json({
+      isSuccessful: false,
+      rowsAfected: rowsAfected,
+      msg: `No se ha recibido el parametro idVacant!`,
       data: applications,
       jwt: req.jwt,
     });
@@ -258,6 +296,7 @@ async function deleteApplication(req, res) {
 module.exports = {
   getApplication,
   getAplicationsByIdUser,
+  getAplicationsByIdVacant,
   getAplicationsByIdUserAndIdVacant,
   getAllApplications,
   createApplication,

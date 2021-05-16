@@ -12,26 +12,29 @@ const {
 //Instanacia del Router.
 const router = Router();
 
-//Ruta de las Compañias.
-//Devuelve todas las compañias...
+//Ruta de las Aplicaciones.
+//Devuelve todas las aplicaciones...
 router.get('/', applicationController.getAllApplications);
 
-//Devuelve solo la compañia con el idCompañia Especificado...
+//Devuelve solo la aplicación con el idApplication Especificado...
 router.get('/byIdApplication/:idApplication', applicationController.getApplication);
 
-//Devuelve solo la compañia con el idCompañia Especificado...
+//Devuelve todas las aplicaciones con el idUser Especificado...
 router.get('/byIdUser/:idUser', applicationController.getAplicationsByIdUser);
 
-//Devuelve solo la compañia con el idCompañia Especificado...
+//Devuelve todas las aplicaciones con el idVacant Especificado...
+router.get('/byIdVacant/:idVacant', applicationController.getAplicationsByIdVacant);
+
+//Devuelve solo las aplicaciones con el idVacant y idUser Especificado...
 router.get('/byIdUserAndIdVacant/', applicationController.getAplicationsByIdUserAndIdVacant);
 
-//Registra una nueva compañia.
+//Registra una nueva aplicación.
 router.post('/create', validationRulesRegisterApplication(), validateCreateApplication, applicationController.createApplication);
 
-//Actualiza la informacion de la compañia.
+//Actualiza la información de la aplicación.
 router.put('/:idApplication', validationRulesDataApplication(), validateUpdateApplication, applicationController.updateApplication);
 
-//Elimina una compañia con un idCompañia especifico...
+//Elimina una aplicación con un idApplication especifico...
 router.delete('/:idApplication', applicationController.deleteApplication);
 
 module.exports = router;
