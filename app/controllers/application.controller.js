@@ -103,8 +103,13 @@ async function getAplicationsByIdVacant(req, res) {
   var applications = null;
   const idVacant = req.params.idVacant;
   if (idVacant) {
-    applications = await Application.findAll({
-      where: { idVacant: idVacant },
+    applications = await User.findAll({
+      include: [
+        { 
+          model: Application,
+          where: { idVacant: idVacant }
+        }
+      ],
     });
     if (applications) {
       rowsAfected = 1;

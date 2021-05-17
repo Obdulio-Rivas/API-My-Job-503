@@ -42,7 +42,7 @@ User.belongsTo(Role, {foreignKey: 'idRole'})
 //Llaves foraneas de la tabla Vacantes
 Vacant.belongsTo(Company, {foreignKey: 'idCompany'})
 //Llaves foraneas de la tabla User
-User.hasMany(Application, {foreignKey: 'idUser'})
+User.hasOne(Application, {foreignKey: 'idUser'}) //User hasMany Application
 //Llaves foraneas de la tabla User
 Application.belongsTo(Vacant, {foreignKey: 'idVacant'})
 

@@ -45,7 +45,7 @@ router.put('/languages/:idCurriculum', validationRulesDataLanguagesCurriculum(),
 //Actualiza la informacion de experiencia laboral del curiculum.
 router.put('/workExperience/:idCurriculum', validationRulesDataWorkExperienceCurriculum(), validateUpdateCurriculum, curriculumController.updateCurriculum);
 
-//Elimina una compañia con un idCompañia especifico...
+//Elimina un curriculum con un idCompañia especifico.
 router.delete('/:idCurriculum', curriculumController.deleteCurriculum);
 
 module.exports = router;
