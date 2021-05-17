@@ -39,11 +39,11 @@ User.hasOne(Curriculum, {foreignKey: 'idUser'})
 User.hasOne(Company, {foreignKey: 'idUser'})
 //Llaves foraneas de la tabla User
 User.belongsTo(Role, {foreignKey: 'idRole'})
-//Llaves foraneas de la tabla Vacantes
+//Llaves foraneas de la tabla Vacant
 Vacant.belongsTo(Company, {foreignKey: 'idCompany'})
-//Llaves foraneas de la tabla User
-User.hasOne(Application, {foreignKey: 'idUser'}) //User hasMany Application
-//Llaves foraneas de la tabla User
+//Llaves foraneas de la tabla Application
+User.hasOne(Application, {foreignKey: 'idUser'})
+//Llaves foraneas de la tabla Vacant
 Application.belongsTo(Vacant, {foreignKey: 'idVacant'})
 
 //Carga de datos tablas catalogo y datos de prueba.
